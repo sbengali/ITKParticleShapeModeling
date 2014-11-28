@@ -13,3 +13,6 @@
 
 # Emacs tmp files
 *~
+
+# Qtcreator cmake files
+*.user
