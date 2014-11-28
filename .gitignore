@@ -19,3 +19,4 @@
 
 # Qtcreator build files
 build/*
+bin/*
