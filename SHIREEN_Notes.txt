@@ -1,0 +1,21 @@
+-------------
+TODO:
+-------------
+(1) Modified Cotan potential for surface sampling energy
+(2) Automatic starting regularization
+(3) svd-based inverse
+(4) Adaptive Gauss Seidel optimization (without bad moves)
+(5) Mixtures stuff
+
+---------------------------------------------------------------------------------------
+Allowing the control of the type of the optimizer from the parameter file
+---------------------------------------------------------------------------------------
+
+(1) Added "optimizer" attribute to the optimization tag which take "jacobi" or "gauss_seidel" values
+(2) Modified HasOptimizationAttribute to check for attributes other than "number_of_scales"
+(3) Added to PSMProject optimizer_tag
+(4) Modified HasOptimizationAttribute to check for the optimizer_tag
+(5) Added GetOptimizerType function to the PSMProject
+(6) Modified PSMCommandLineClass::ReadInputs to set the optimization mode of the entropy filter according to
+    supplied optimizer type, default is jacobi
+    

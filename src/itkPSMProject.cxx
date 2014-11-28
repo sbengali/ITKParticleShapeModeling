@@ -33,6 +33,7 @@ const std::string PSMProject::preprocessing_tag       = "preprocessing";
 const std::string PSMProject::scale_tag               = "scale";
 const std::string PSMProject::scale_number_tag        = "number";
 const std::string PSMProject::variables_tag           = "variables";
+const std::string PSMProject::optimizer_tag           = "optimizer";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -66,44 +67,76 @@ unsigned int PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+std::string PSMProject
+::GetOptimizerType() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(optimizer_tag))
+        {
+            return opt->GetAttribute(optimizer_tag);
+        }
+        else
+        {
+            itkExceptionMacro("Optimizer type not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
 bool PSMProject
 ::HasOptimizationAttribute(const std::string& name, unsigned int s) const
 {
     DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
     if (opt != 0) // found the optimization element
     {
-        unsigned int nscales = 1;
-
-        // Are there scale elements?
-        if (opt->HasAttribute(number_of_scales_tag))
+        // allowing to check for different optimization attributes other than number_of_scales
+        if(name == number_of_scales_tag)
         {
-            nscales = static_cast<unsigned int>(atoi(opt->GetAttribute(number_of_scales_tag).c_str()));
-            // If the number_of_scales_tag is the one being checked
-            if(name == number_of_scales_tag) { return true; }
-        }
+            unsigned int nscales = 1;
 
-        // Did the user ask for a scale that isn't specified?
-        if (s+1 > nscales)  { return false; }
-
-        // If only one scale, then look in element attributes for name
-        if (nscales == 1)
-        {
-            if (opt->HasAttribute(name)) { return true; }
-        }
-
-        // Finally, look for a scale element with name i
-        DOMNode::ChildrenListType children;
-        opt->GetAllChildren(children);
-
-        for (unsigned i = 0; i < children.size(); i++)
-        {
-            if ( children[i]->GetName() == scale_tag
-                 &&
-                 static_cast<unsigned int>(atoi(children[i]->GetAttribute(scale_number_tag).c_str())) == s )
+            // Are there scale elements?
+            if (opt->HasAttribute(number_of_scales_tag))
             {
-                if (children[i]->HasAttribute(name)) { return true; }
-                else { return false; }
+                nscales = static_cast<unsigned int>(atoi(opt->GetAttribute(number_of_scales_tag).c_str()));
+                return true;
             }
+
+            // Did the user ask for a scale that isn't specified?
+            if (s+1 > nscales)  { return false; }
+
+            // If only one scale, then look in element attributes for name
+            if (nscales == 1)
+            {
+                if (opt->HasAttribute(name)) { return true; }
+            }
+
+            // Finally, look for a scale element with name i
+            DOMNode::ChildrenListType children;
+            opt->GetAllChildren(children);
+
+            for (unsigned i = 0; i < children.size(); i++)
+            {
+                if ( children[i]->GetName() == scale_tag
+                     &&
+                     static_cast<unsigned int>(atoi(children[i]->GetAttribute(scale_number_tag).c_str())) == s )
+                {
+                    if (children[i]->HasAttribute(name)) { return true; }
+                    else { return false; }
+                }
+            }
+        }
+        if(name == optimizer_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(optimizer_tag))
+                return true;
+            else
+                return false;
+
         }
     }
 

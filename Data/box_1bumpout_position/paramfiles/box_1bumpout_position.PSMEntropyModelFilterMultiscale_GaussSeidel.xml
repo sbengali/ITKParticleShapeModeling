@@ -29,24 +29,24 @@
     
     <!-- The optimized output model -->
     <model name = "optimized">
-      pdm/box_1bumpout_position.00.optimized.lpts
-      pdm/box_1bumpout_position.01.optimized.lpts
-      pdm/box_1bumpout_position.02.optimized.lpts
-      pdm/box_1bumpout_position.03.optimized.lpts
-      pdm/box_1bumpout_position.04.optimized.lpts
-      pdm/box_1bumpout_position.05.optimized.lpts
-      pdm/box_1bumpout_position.06.optimized.lpts
-      pdm/box_1bumpout_position.07.optimized.lpts
-      pdm/box_1bumpout_position.08.optimized.lpts
-      pdm/box_1bumpout_position.09.optimized.lpts
-      pdm/box_1bumpout_position.10.optimized.lpts
+      pdm/box_1bumpout_position.00.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.01.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.02.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.03.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.04.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.05.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.06.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.07.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.08.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.09.optimized_gauss_seidel.lpts
+      pdm/box_1bumpout_position.10.optimized_gauss_seidel.lpts
     </model>
   </data>
   
   <initialization algorithm="splitting">
   </initialization>
   
-  <optimization algorithm="basic" number_of_scales = "12" optimizer ="jacobi">
+  <optimization algorithm="basic" number_of_scales = "12" optimizer = "gauss_seidel" >
     <scale number = "0"
            regularization_initial   = "10.0"
            regularization_final     = "1.0" 
