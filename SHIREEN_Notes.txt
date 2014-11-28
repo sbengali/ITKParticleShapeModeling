@@ -8,7 +8,7 @@ TODO:
 (5) Mixtures stuff
 
 ---------------------------------------------------------------------------------------
-Allowing the control of the type of the optimizer from the parameter file
+Nov 29th, 2014 - Allowing the control of the type of the optimizer from the parameter file -- commited
 ---------------------------------------------------------------------------------------
 
 (1) Added "optimizer" attribute to the optimization tag which take "jacobi" or "gauss_seidel" values
@@ -19,3 +19,16 @@ Allowing the control of the type of the optimizer from the parameter file
 (6) Modified PSMCommandLineClass::ReadInputs to set the optimization mode of the entropy filter according to
     supplied optimizer type, default is jacobi
     
+---------------------------------------------------------------------------------------
+Nov 29th, 2014 - Adding Adaptive Gauss Seidel optimization (without bad moves) 
+---------------------------------------------------------------------------------------
+
+(1) Added to PSMGradientDescentOptimizer SetModeToAdaptiveGaussSeidel function (m_OptimizationMode = 2)
+(2) Modified PSMCommandLineClass::ReadInputs to set optimization mode to adaptive gauss seidel according to 
+    the supplied optimizer type.
+(3) Modified PSMGradientDescentOptimizer::StartOptimization to trigger adaptive gauss seidel according to the 
+    current optimization mode.
+(4) Added to PSMGradientDescentOptimizer StartAdaptiveGaussSeidelOptimization function
+(5) Added to PSMParticleEntropyFunction an Evaluate function which returns the energy
+(6) Modified PSMParticleEntropyFunction::Evaluate to call the new Evaluate function with energy in order not to repeat the same code
+(7) Added Energy function to PSMParticleEntropyFunction

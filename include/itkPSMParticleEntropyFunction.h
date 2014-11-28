@@ -115,7 +115,7 @@ public:
       argument is the index of the domain within that particle system.  The
       third argument is the index of the particle location within the given
       domain. */
-  virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
+  /*virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
                               double &) const;
 
   virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
@@ -128,7 +128,25 @@ public:
   {
     itkExceptionMacro("This method not implemented");
     return 0.0;
+  } */
+
+  virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
+                              double&, double & ) const;
+
+  inline virtual VectorType Evaluate(unsigned int a, unsigned int b, const ParticleSystemType *c,
+                                     double& d) const
+  {
+      double e;
+      return this->Evaluate(a, b, c, d, e);
   }
+
+  inline virtual double Energy(unsigned int a, unsigned int b, const ParticleSystemType *c) const
+  {
+      double d, e;
+      this->Evaluate(a, b, c, d, e);
+      return e;
+  }
+
 
   virtual void ResetBuffers()
   {

@@ -171,6 +171,8 @@ void PSMCommandLineClass<VDimension>
                 this->m_Filter->GetOptimizer()->SetModeToJacobi();
             else if (optimizer_type == "gauss_seidel")
                 this->m_Filter->GetOptimizer()->SetModeToGaussSeidel();
+            else if (optimizer_type == "adaptive_gauss_seidel")
+                this->m_Filter->GetOptimizer()->SetModeToAdaptiveGaussSeidel();
         }
         else
         {
