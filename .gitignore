@@ -16,3 +16,6 @@
 
 # Qtcreator cmake files
 *.user
+
+# Qtcreator build files
+build/*

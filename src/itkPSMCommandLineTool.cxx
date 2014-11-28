@@ -24,66 +24,73 @@
 
 int main( int argc, char *argv[] )
 {
-  int dim = 0;
-  std::string output_path = "";
-  std::string input_path_prefix = "";
-  std::string errstring = "";
-  // Check for proper arguments
-  if (argc < 3)
-  {
-    std::cout << "Wrong number of arguments. \nUse: "
-    << "ParticleShapeModeling_CLI parameter_file shape_dimensions [output_path] [input_path]\n"
-    << "See itk::PSMParameterFileReader for documentation on the parameter file format.\n"
-    << "Enter number of dimensions of the shapes (2 or 3) following parameter file name.\n"
-    << "Note that input_path will be prefixed to any file names and paths in the xml parameter file.\n"
-    << std::endl;
-    return EXIT_FAILURE;
-  }
-  
-  if (argc > 3)
-  {
-    output_path = std::string(argv[3]);
-  }
-  
-  if (argc > 4)
-  {
-    input_path_prefix = std::string(argv[4]);
-  }
-  
-  try
-  {
-    dim = atoi(argv[2]);
-    // This function is called to fix an ITK runtime error where image format is not recognized.
-    RegisterRequiredFactories();
-    if (dim == 2)
+    // hack to debug
+    argc    = 5;
+    argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale.xml";
+    argv[2] = (char*) "3";
+    argv[3] = (char*) "../Data/box_1bumpout_position/";
+    argv[4] = (char*) "../Data/box_1bumpout_position/";
+
+    int dim = 0;
+    std::string output_path = "";
+    std::string input_path_prefix = "";
+    std::string errstring = "";
+    // Check for proper arguments
+    if (argc < 3)
     {
-      itk::PSMCommandLineClass<2>::Pointer psmClass = itk::PSMCommandLineClass<2>::New();
-      psmClass->Run( argv[1], input_path_prefix, output_path );
+        std::cout << "Wrong number of arguments. \nUse: "
+                  << "ParticleShapeModeling_CLI parameter_file shape_dimensions [output_path] [input_path]\n"
+                  << "See itk::PSMParameterFileReader for documentation on the parameter file format.\n"
+                  << "Enter number of dimensions of the shapes (2 or 3) following parameter file name.\n"
+                  << "Note that input_path will be prefixed to any file names and paths in the xml parameter file.\n"
+                  << std::endl;
+        return EXIT_FAILURE;
     }
-    else if (dim == 3)
+
+    if (argc > 3)
     {
-      itk::PSMCommandLineClass<3>::Pointer psmClass = itk::PSMCommandLineClass<3>::New();
-      psmClass->Run( argv[1], input_path_prefix, output_path );
+        output_path = std::string(argv[3]);
     }
-    else
+
+    if (argc > 4)
     {
-      std::cerr << "Please specify the input dimension as 2 or 3" << std::endl;
+        input_path_prefix = std::string(argv[4]);
     }
-  }
-  
-  catch(itk::ExceptionObject &e)
-  {
-    std::cerr << "ITK exception with description: " << e.GetDescription()
-    << "\n at location:" << e.GetLocation()
-    << "\n in file:" << e.GetFile() << std::endl;
-    return EXIT_FAILURE;
-  }
-  
-  catch(...)
-  {
-    errstring = "Unknown exception thrown";
-    return EXIT_FAILURE;
-  }
-  
-  return EXIT_SUCCESS;
+
+    try
+    {
+        dim = atoi(argv[2]);
+        // This function is called to fix an ITK runtime error where image format is not recognized.
+        RegisterRequiredFactories();
+        if (dim == 2)
+        {
+            itk::PSMCommandLineClass<2>::Pointer psmClass = itk::PSMCommandLineClass<2>::New();
+            psmClass->Run( argv[1], input_path_prefix, output_path );
+        }
+        else if (dim == 3)
+        {
+            itk::PSMCommandLineClass<3>::Pointer psmClass = itk::PSMCommandLineClass<3>::New();
+            psmClass->Run( argv[1], input_path_prefix, output_path );
+        }
+        else
+        {
+            std::cerr << "Please specify the input dimension as 2 or 3" << std::endl;
+        }
+    }
+
+    catch(itk::ExceptionObject &e)
+    {
+        std::cerr << "ITK exception with description: " << e.GetDescription()
+                  << "\n at location:" << e.GetLocation()
+                  << "\n in file:" << e.GetFile() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    catch(...)
+    {
+        errstring = "Unknown exception thrown";
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
