@@ -213,7 +213,7 @@ public:
       function that will minimize the entropy of the shape vectors in
       high-dimensional shape space.  This is the cost function term
       that establishes correspondence across shapes. */
-    PSMShapeEntropyFunction<Dimension> *ShapeEntropyFunction()
+    PSMShapeEntropyFunction<Dimension> *GetShapeEntropyFunction()
     {
         return m_ShapeEntropyFunction;
     }

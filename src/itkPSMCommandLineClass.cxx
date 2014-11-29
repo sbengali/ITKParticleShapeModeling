@@ -194,6 +194,20 @@ void PSMCommandLineClass<VDimension>
             this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType("gaussian");
         }
 
+        // Check if the inverse method has been supplied
+        if(this->m_Project->HasOptimizationAttribute("inverse_method"))
+        {
+            std::string inverse_method = this->m_Project->GetInverseMethod();
+
+            std::cout << "Inverse method: " << inverse_method << std::endl;
+            this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod(inverse_method);
+        }
+        else
+        {
+            // default is gaussian potential
+            this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod("eig");
+        }
+
     }
 }
 

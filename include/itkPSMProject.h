@@ -72,6 +72,7 @@ namespace itk
   static const std::string           variables_tag;
   static const std::string           optimizer_tag;
   static const std::string  pairwise_potential_tag;
+  static const std::string      inverse_method_tag;
 
 
   /** Set the DOM node object, which contains the XML tree of
@@ -121,6 +122,10 @@ namespace itk
   /** Returns the pairwise potential type for particle entropy function (i.e. surface sampling)
    */
   std::string GetPairwisePotentialType() const;
+
+  /** Returns the method to be used for computing inverse of matrices (covariances in particular)
+   **/
+  std::string GetInverseMethod() const;
 
   /** Returns true if the optimization_tag element includes the given
       parameter at the given scale (optional).  Also returns false if

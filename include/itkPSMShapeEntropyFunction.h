@@ -194,6 +194,14 @@ public:
         return m_ShapePCAVariances;
     }
 
+    /** Set/Get the inverse method to be use to compute matrix inverse
+     */
+    void SetInverseMethod(std::string method)
+    { m_InverseMethod = method;}
+
+    std::string GetInverseMethod() const
+    { return m_InverseMethod; }
+
 protected:
     PSMShapeEntropyFunction()
     {
@@ -221,6 +229,8 @@ protected:
     double m_MinimumVarianceDecayConstant;
     int m_RecomputeCovarianceInterval;
     int m_Counter;
+
+    std::string m_InverseMethod;
 
 };
 

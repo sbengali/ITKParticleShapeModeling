@@ -23,6 +23,8 @@
 //#include "itkParticleGaussianModeWriter.h"
 #include <string>
 
+#include "vnl/algo/vnl_svd.h"
+
 namespace itk
 {
 
@@ -88,34 +90,77 @@ PSMShapeEntropyFunction<VDimension>
     }
 
     // Compute the eigenvalues and vectors and the point updates.
-    vnl_symmetric_eigensystem<double> symEigen(A);
-    m_PointsUpdate = points_minus_mean * ((symEigen.pinverse()).transpose());
-    m_MinimumEigenValue = symEigen.D(0, 0);
-
-    m_CurrentEnergy = 0.0;
-    for (unsigned int i = 1; i < num_samples; i++)
+    if(this->m_InverseMethod == "eig")
     {
-        if (symEigen.D(i, i) < m_MinimumEigenValue)
+        vnl_symmetric_eigensystem<double> symEigen(A);
+        m_PointsUpdate = points_minus_mean * ((symEigen.pinverse()).transpose());
+        m_MinimumEigenValue = symEigen.D(0, 0);
+
+        m_CurrentEnergy = 0.0;
+        for (unsigned int i = 1; i < num_samples; i++)
         {
-            m_MinimumEigenValue = symEigen.D(i, i);
+            if (symEigen.D(i, i) < m_MinimumEigenValue)
+            {
+                m_MinimumEigenValue = symEigen.D(i, i);
+            }
+            m_CurrentEnergy += log(symEigen.D(i,i));
         }
-        m_CurrentEnergy += log(symEigen.D(i,i));
-    }
-    // m_CurrentEnergy = 0.5*log(symEigen.determinant());
-    m_CurrentEnergy /= num_samples;
+        // m_CurrentEnergy = 0.5*log(symEigen.determinant());
+        m_CurrentEnergy /= num_samples;
 
-    // Record the variance for each PCA shape "parameter" (mode).
-    // Variance is the eigenvalue of the covariance matrix.  Reverse
-    // order of values because we want them in decreasing order of
-    // magnitude.
-    if (m_ShapePCAVariances.size() < num_samples)
-    {
-        m_ShapePCAVariances.resize(num_samples);
+        // Record the variance for each PCA shape "parameter" (mode).
+        // Variance is the eigenvalue of the covariance matrix.  Reverse
+        // order of values because we want them in decreasing order of
+        // magnitude.
+        if (m_ShapePCAVariances.size() < num_samples)
+        {
+            m_ShapePCAVariances.resize(num_samples);
+        }
+        for (int i = 0; i < (int)num_samples; i++)
+        {
+            int tmp = num_samples - i - 1;
+            m_ShapePCAVariances[i] = symEigen.D(tmp, tmp) - m_MinimumVariance;
+        }
     }
-    for (int i = 0; i < (int)num_samples; i++)
+    else if(this->m_InverseMethod == "svd")
     {
-        int tmp = num_samples - i - 1;
-        m_ShapePCAVariances[i] = symEigen.D(tmp, tmp) - m_MinimumVariance;
+        // Note that for symmetric matrices (which is our case here for a covariance matrix),
+        // eigenvalues and singular values coincide such that singular value = abs(eigenvalue)
+        // for non-zero eigen values.
+
+        vnl_svd<double> svdA(A);
+
+        vnl_matrix_type Ainv = svdA.V() * svdA.Winverse() * svdA.U().transpose();
+        m_PointsUpdate       = points_minus_mean * (Ainv.transpose());
+
+        m_MinimumEigenValue = fabs(svdA.W(0, 0));
+
+        m_CurrentEnergy = 0.0;
+        for (unsigned int i = 1; i < num_samples; i++)
+        {
+            if (fabs(svdA.W(i, i)) < m_MinimumEigenValue)
+            {
+                m_MinimumEigenValue = fabs(svdA.W(i, i));
+            }
+            m_CurrentEnergy += log(fabs(svdA.W(i,i)));
+        }
+
+        // m_CurrentEnergy = 0.5*log(svdA.determinant_magnitude());
+        m_CurrentEnergy /= num_samples;
+
+        // Record the variance for each PCA shape "parameter" (mode).
+        // Variance is the eigenvalue of the covariance matrix.  Reverse
+        // order of values because we want them in decreasing order of
+        // magnitude.
+        if (m_ShapePCAVariances.size() < num_samples)
+        {
+            m_ShapePCAVariances.resize(num_samples);
+        }
+        for (int i = 0; i < (int)num_samples; i++)
+        {
+            int tmp = num_samples - i - 1;
+            m_ShapePCAVariances[i] = fabs(svdA.W(tmp, tmp)) - m_MinimumVariance;
+        }
     }
 }
 

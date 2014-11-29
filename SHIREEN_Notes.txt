@@ -35,7 +35,7 @@ Nov 28th, 2014 - Adding Adaptive Gauss Seidel optimization (without bad moves)
 
 
 ---------------------------------------------------------------------------------------
-Nov 28th, 2014 - Updating the particle entropy function to enable modified cotan potential
+Nov 29th, 2014 - Updating the particle entropy function to enable modified cotan potential -- commited
 ---------------------------------------------------------------------------------------
 
 (1) Added "pairwise_potential" attribute to the optimization tag which take "gaussian" or "cotan" values
@@ -64,5 +64,20 @@ Nov 28th, 2014 - Updating the particle entropy function to enable modified cotan
 (20) Added to PSMParticleEntropyFunction EvaluateGaussian and EvaluateCotan functions where Evaluate fuction was 
      modified to call one of them according to the pairwise potential type
      
+---------------------------------------------------------------------------------------
+Nov 29th, 2014 - Using svd-based matrix inverse
+---------------------------------------------------------------------------------------
 
+(1) Added "inverse_method" attribute to the optimization tag which take "svd" or "eig" values  
+(2) Added to PSMProject inverse_method_tag
+(3) Modified HasOptimizationAttribute to check for the inverse_method_tag
+(4) Added GetInverseMethod function to the PSMProject
+(5) Added to PSMShapeEntropyFunction a new member variable (m_InverseMethod) to switch between svd and eigen methods for 
+    computing matrix inverse
+(6) Added the set/get functions for m_InverseMethod
+(7) Modified PSMCommandLineClass::ReadInputs to set the inverse method of the shape entropy function
+    according to the supplied inverse method, default is eig
+(8) Change ShapeEntropyFunction() in PSMEntropyModelFilter to GetShapeEntropyFunction() to maintain consistency
+(9) Modified PSMShapeEntropyFunction::ComputeCovarianceMatrix to compute matrix inverse according to the supplied
+    inverse method
   
