@@ -180,6 +180,20 @@ void PSMCommandLineClass<VDimension>
             this->m_Filter->GetOptimizer()->SetModeToJacobi();
         }
 
+        // Check if the pairwise potential type has been supplied
+        if(this->m_Project->HasOptimizationAttribute("pairwise_potential"))
+        {
+            std::string pairwise_potential = this->m_Project->GetPairwisePotentialType();
+
+            std::cout << "Pairwise potential: " << pairwise_potential << std::endl;
+            this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType(pairwise_potential);
+        }
+        else
+        {
+            // default is gaussian potential
+            this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType("gaussian");
+        }
+
     }
 }
 

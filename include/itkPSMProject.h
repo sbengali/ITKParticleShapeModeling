@@ -71,6 +71,7 @@ namespace itk
   static const std::string        scale_number_tag;
   static const std::string           variables_tag;
   static const std::string           optimizer_tag;
+  static const std::string  pairwise_potential_tag;
 
 
   /** Set the DOM node object, which contains the XML tree of
@@ -116,6 +117,10 @@ namespace itk
 
   /** Returns the optimizer type */
   std::string GetOptimizerType() const;
+
+  /** Returns the pairwise potential type for particle entropy function (i.e. surface sampling)
+   */
+  std::string GetPairwisePotentialType() const;
 
   /** Returns true if the optimization_tag element includes the given
       parameter at the given scale (optional).  Also returns false if

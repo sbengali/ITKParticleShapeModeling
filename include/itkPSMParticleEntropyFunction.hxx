@@ -152,6 +152,19 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
 ::Evaluate(unsigned int idx,unsigned int d, const ParticleSystemType * system,
            double &maxdt, double &energy) const
 {
+    if(m_PairwisePotentialType == "gaussian")
+        return this->EvaluateGaussian(idx, d, system, maxdt, energy);
+    else if(m_PairwisePotentialType == "cotan")
+        return this->EvaluateCotan(idx, d, system, maxdt, energy);
+
+}
+
+template <class TGradientNumericType, unsigned int VDimension>
+typename PSMParticleEntropyFunction<TGradientNumericType, VDimension>::VectorType
+PSMParticleEntropyFunction<TGradientNumericType, VDimension>
+::EvaluateGaussian(unsigned int idx,unsigned int d, const ParticleSystemType * system,
+                   double &maxdt, double &energy) const
+{
     // Grab a pointer to the domain.  We need a Domain that has surface normal information.
     const PSMImageDomainWithGradients<TGradientNumericType, VDimension> *
             domain = static_cast<const PSMImageDomainWithGradients<
@@ -292,6 +305,209 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
     return gradE;
 }
 
+template <class TGradientNumericType, unsigned int VDimension>
+typename PSMParticleEntropyFunction<TGradientNumericType, VDimension>::VectorType
+PSMParticleEntropyFunction<TGradientNumericType, VDimension>
+::EvaluateCotan(unsigned int idx,unsigned int d, const ParticleSystemType * system,
+                double &maxdt, double &energy) const
+{
+    // Grab a pointer to the domain.  We need a Domain that has surface normal information.
+    const PSMImageDomainWithGradients<TGradientNumericType, VDimension> *
+            domain = static_cast<const PSMImageDomainWithGradients<
+            TGradientNumericType, VDimension> *>(system->GetDomain(d));
+
+    const double epsilon           = 1.0e-6;
+    const double NBHD_SIGMA_FACTOR = 1.5f;
+
+    // Determine the extent of the neighborhood that will be used in the Parzen
+    // windowing estimation.
+    double neighborhood_radius = m_GlobalSigma * NBHD_SIGMA_FACTOR * this->GetNeighborhoodToSigmaRatio();
+
+    if (neighborhood_radius > this->GetMaximumNeighborhoodRadius())
+        neighborhood_radius = this->GetMaximumNeighborhoodRadius();
+
+
+    // Get the position for which we are computing the gradient.
+    PointType pos = system->GetPosition(idx, d);
+
+    // Get the neighborhood surrounding the point "pos".
+    typename ParticleSystemType::PointVectorType neighborhood
+            = system->FindNeighborhoodPoints(pos, neighborhood_radius, d);
+
+    // Compute the weights based on angle between the neighbors and the center.
+    std::vector<double> weights;
+    this->ComputeAngularWeights(pos,neighborhood,domain,weights);
+
+    // Compute the gradients.
+    VectorType r;
+    VectorType gradE;
+    double     rmag;
+
+    for (unsigned int n = 0; n < VDimension; n++)
+    {
+        gradE[n] = 0.0;
+    }
+
+    double prob_xi = epsilon;
+    double M       = epsilon;
+    for (unsigned int k = 0; k < neighborhood.size(); k++)
+    {
+        for (unsigned int n = 0; n < VDimension; n++)
+        {
+            // Note that the Neighborhood object has already filtered the
+            // neighborhood for points whose normals differ by > 90 degrees.
+            r[n] = (pos[n] - neighborhood[k].Point[n]) ;
+        }
+        rmag = r.magnitude();
+
+        double dPhi = this->ComputeModifiedCotangentDerivative(rmag);
+        for (unsigned int n = 0; n < VDimension; n++)
+        {
+            gradE[n] += ( ( weights[k] * dPhi * r[n] )/(rmag + epsilon) );
+        }
+
+        prob_xi += weights[k] * this->ComputeModifiedCotangent(rmag);
+        M       += weights[k];
+    }
+
+    prob_xi /= M;
+    for (unsigned int n = 0; n < VDimension; n++)
+    {
+        gradE[n] *= ( (-1.0/ (M * prob_xi ) ) );
+    }
+
+
+    maxdt   = m_GlobalSigma * 0.1;
+    energy  = prob_xi ;
+
+    return gradE ;
+}
+
+template <class TGradientNumericType, unsigned int VDimension>
+void
+PSMParticleEntropyFunction<TGradientNumericType, VDimension>
+::EstimateGlobalSigma(const ParticleSystemType * system)
+{
+    const double epsilon = 1.0e-6;
+    const int K          = 6; // hexagonal ring - one jump
+
+    const unsigned int num_samples   = system->GetNumberOfDomains(); // num_shapes * domains_per_shape
+    const unsigned int num_particles = system->GetNumberOfParticles();
+    const unsigned int num_shapes    = num_samples / m_DomainsPerShape;
+
+    if (num_particles < 7)
+    {
+        m_GlobalSigma = this->GetMaximumNeighborhoodRadius() / this->GetNeighborhoodToSigmaRatio();
+        return;
+    }
+
+    double avgDist = 0.0;
+    for (unsigned int domainInShape = 0; domainInShape < m_DomainsPerShape; domainInShape++)
+    {
+        for (unsigned int shapeNo = 0; shapeNo < num_shapes; shapeNo++)
+        {
+            // linear index of the current domain in the particle system
+            int dom = shapeNo * m_DomainsPerShape + domainInShape;
+
+            // get the particles of the current domain in shape sample to construct a sample for kdtree
+            typename SampleType::Pointer sample = SampleType::New();
+            sample->SetMeasurementVectorSize( VDimension );
+            for (unsigned int idx = 0; idx < num_particles ; idx++)
+            {
+                // get the current particle
+                PointType            pos  = system->GetPosition(idx, dom);
+
+                // add it to the sample
+                MeasurementVectorType mv;
+                for(unsigned int n = 0 ; n < VDimension; n++)
+                    mv[n] = pos[n];
+
+                sample->PushBack( mv );
+            }
+
+            typename TreeGeneratorType::Pointer treeGenerator = TreeGeneratorType::New();
+            treeGenerator->SetSample( sample );
+            treeGenerator->SetBucketSize( 16 );
+            treeGenerator->Update();
+
+            typename TreeType::Pointer tree = treeGenerator->GetOutput();
+
+            // Find the closest points to each particle
+            for (unsigned int idx = 0; idx < num_particles ; idx++)
+            {
+                // get the current particle
+                PointType  pos  = system->GetPosition(idx, dom);
+
+                // construct a query point
+                MeasurementVectorType queryPoint;
+                for(unsigned int n = 0 ; n < VDimension; n++)
+                    queryPoint[n] = pos[n];
+
+                // K-Neighbor search
+                unsigned int numberOfNeighbors = K+1; // +1 to exclude myself
+                typename TreeType::InstanceIdentifierVectorType neighbors;
+                tree->Search( queryPoint, numberOfNeighbors, neighbors ) ;
+
+                double meanDist = 0;
+                for ( unsigned int k = 0 ; k < neighbors.size() ; k++ )
+                {
+                    // the distance to myself will be zero anyway, no need to explicitly check for this
+                    // only ignore it when computing the average
+
+                    MeasurementVectorType neighPoint = tree->GetMeasurementVector( neighbors[k] );
+                    double curDist = 0.0;
+                    for(unsigned int n = 0 ; n < VDimension; n++)
+                        curDist += pow(queryPoint[n]-neighPoint[n],2.0);
+                    curDist = sqrt(curDist);
+
+                    meanDist += curDist;
+                }
+                meanDist /= K; // excluding myself from the mean computation
+                avgDist += meanDist;
+            }
+        }
+    }
+
+    avgDist /= (double)(num_particles * num_shapes * m_DomainsPerShape);
+
+    m_GlobalSigma = avgDist / 0.57f; // based on hexagonal packing, sigma is the distance to the second ring
+
+    if (m_GlobalSigma < epsilon)
+    {
+        m_GlobalSigma = this->GetMinimumNeighborhoodRadius() / this->GetNeighborhoodToSigmaRatio();
+    }
+}
+
+template <class TGradientNumericType, unsigned int VDimension>
+void
+PSMParticleEntropyFunction<TGradientNumericType, VDimension>
+::BeforeIteration()
+{
+    if(m_PairwisePotentialType == "cotan")
+    {
+        if(m_GlobalSigma < 0.0)
+        {
+            // only compute sigma once during the optimization of a specific scale
+            this->EstimateGlobalSigma(this->GetParticleSystem());
+            std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl;
+        }
+        else
+        {
+            // compute the global sigma for the whole particle system using its current status (particles position)
+            double oldSigma = m_GlobalSigma;
+            this->EstimateGlobalSigma(this->GetParticleSystem());
+
+            // make sure that we update the global sigma at the beginning (in the constructor, it is -1)
+            if ( (abs(oldSigma - m_GlobalSigma)/m_GlobalSigma) < 0.1)
+            {
+                // not that much change, probably same number of particles, don't change the global sigma
+                m_GlobalSigma = oldSigma;
+            }
+        }
+
+    }
+
+}
 
 }// end namespace
 #endif

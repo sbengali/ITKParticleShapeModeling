@@ -23,6 +23,11 @@
 #include "itkPSMImageDomainWithGradients.h"
 #include <vector>
 
+#include "itkVector.h"
+#include "itkListSample.h"
+#include "itkWeightedCentroidKdTreeGenerator.h"
+#include "itkEuclideanDistanceMetric.h"
+
 namespace itk
 {
 
@@ -38,12 +43,12 @@ namespace itk
  *
  *J Cates, P T Fletcher, M Styner, M Shenton, R Whitaker. Shape Modeling and
  * Analysis with Entropy-Based Particle Systems.  Information Processing in
- * Medical Imaging IPMI 2007, LNCS 4584, pp. 333�345, 2007.
+ * Medical Imaging IPMI 2007, LNCS 4584, pp. 333-345, 2007.
  *
  *
  * We treat a surface as a subset of \f$\Re^d\f$, where \f$d=2\f$ or \f$d=3\f$
  * depending whether we are processing curves in the plane or surfaces in a
- * volume, refspectively.  The method we describe here deals with smooth,
+ * volume, respectively.  The method we describe here deals with smooth,
  * closed manifolds of codimension one, and we will refer to such manifolds as
  * {\em surfaces}.  We sample a surface \f${\cal S} \subset \Re^d\f$ using a
  * discrete set of \f$N\f$ points that are considered random variables \f$Z =
@@ -75,6 +80,29 @@ namespace itk
  * \sum_{i} \log \frac{1}{N(N-1)} \sum_{j \neq i} G(x_i - x_j, \sigma_i).
  * \f]
  *
+ *
+ * The following description is an excerpt from:
+ *
+ *  M.D. Meyer. “Dynamic Particle Systems for Adaptive Sampling of Implicit Surfaces,” School of Computing, University of Utah, 2008.
+ *
+ *
+ * The Gaussian-based energy is smooth and nearly compact because the function can be truncated in a manner
+ * that does not significantly affect its behavior.
+ * The Gaussian, however, has a characteristic length and is not scale invariant. A particularly interesting example
+ * of a scale-invariant energy is the electrostatic potential, \f$E_{ij} = 1/|r_{ij}|\f$.
+ * The electrostatic function is smooth, except at the origin (which can be fixed by adding adding a
+ * small constant to the denominator), but does not fall off quickly enough to provide local behavior.
+ * As a result, particles do not remain on flat regions but instead concentrate exclusively on convex,
+ * high-curvature areas—a well-known phenomenon from electrostatics. Furthermore, truncating the electrostatic potential
+ * yields unreliable results, and the configurations of particle steady states are very sensitive to the
+ * distance of truncation. Thus, the electrostatic function is not approximately compact.
+ *
+ * An energy function which establishes a good compromise between approximate scale invariance and compactness is a modified cotangent
+ * which can be enabled by setting the pairwise potential using SetPairwisePotentialType("cotan")
+ *
+ * This potential only depend on a global sigma which is defined using the neighborhood of each particle
+ * compared to a sigma per particle in case of Gaussian potential.
+ *
  * \ingroup PSM
  * \ingroup PSMOptimization
  * \ingroup PSMCostFunctions
@@ -84,89 +112,104 @@ template <class TGradientNumericType, unsigned int VDimension>
 class PSMParticleEntropyFunction : public PSMCostFunction<VDimension>
 {
 public:
- /** Standard class typedefs. */
-  typedef PSMParticleEntropyFunction Self;
-  typedef SmartPointer<Self>  Pointer;
-  typedef SmartPointer<const Self>  ConstPointer;
-  typedef PSMCostFunction<VDimension> Superclass;
-  itkTypeMacro( PSMParticleEntropyFunction, PSMCostFunction);
+    /** Standard class typedefs. */
+    typedef PSMParticleEntropyFunction Self;
+    typedef SmartPointer<Self>  Pointer;
+    typedef SmartPointer<const Self>  ConstPointer;
+    typedef PSMCostFunction<VDimension> Superclass;
+    itkTypeMacro( PSMParticleEntropyFunction, PSMCostFunction);
 
-  /** Data type representing individual gradient components. */
-  typedef TGradientNumericType GradientNumericType;
+    /** Data type representing individual gradient components. */
+    typedef TGradientNumericType GradientNumericType;
 
-  /** Type of particle system. */
-  typedef typename Superclass::ParticleSystemType ParticleSystemType;
+    /** Type of particle system. */
+    typedef typename Superclass::ParticleSystemType ParticleSystemType;
 
-  /** Cache type for the sigma values. */
-  typedef PSMContainerArrayAttribute<double, VDimension> SigmaCacheType;
+    /** Cache type for the sigma values. */
+    typedef PSMContainerArrayAttribute<double, VDimension> SigmaCacheType;
 
-  /** Vector & Point types. */
-  typedef typename Superclass::VectorType VectorType;
-  typedef typename ParticleSystemType::PointType PointType;
-  typedef  vnl_vector_fixed<TGradientNumericType, VDimension> GradientVectorType;
-  
-  /** Method for creation through the object factory. */
-  itkNewMacro(Self);
+    /** Vector & Point types. */
+    typedef typename Superclass::VectorType VectorType;
+    typedef typename ParticleSystemType::PointType PointType;
+    typedef  vnl_vector_fixed<TGradientNumericType, VDimension> GradientVectorType;
 
-  /** Dimensionality of the domain of the particle system. */
-  itkStaticConstMacro(Dimension, unsigned int, VDimension);
+    /** typedefs for kdtree-based distance estimation for global sigma estimation */
+    typedef itk::Vector< double, VDimension > MeasurementVectorType;
+    typedef itk::Statistics::ListSample< MeasurementVectorType > SampleType;
+    typedef itk::Statistics::KdTreeGenerator< SampleType > TreeGeneratorType;
+    typedef typename  TreeGeneratorType::KdTreeType TreeType;
+    typedef typename TreeType::NearestNeighbors NeighborsType;
+    typedef typename TreeType::KdTreeNodeType NodeType;
 
-  /** The first argument is a pointer to the particle system.  The second
+    /** Method for creation through the object factory. */
+    itkNewMacro(Self);
+
+    /** Dimensionality of the domain of the particle system. */
+    itkStaticConstMacro(Dimension, unsigned int, VDimension);
+
+    /** The first argument is a pointer to the particle system.  The second
       argument is the index of the domain within that particle system.  The
       third argument is the index of the particle location within the given
       domain. */
-  /*virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
+
+    /*virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
                               double &) const;
 
-  virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
-                              double &, double &) const
-  {
-    itkExceptionMacro("This method not implemented");
-    return VectorType();
-  }
-  virtual double Energy(unsigned int, unsigned int, const ParticleSystemType *) const
-  {
-    itkExceptionMacro("This method not implemented");
-    return 0.0;
-  } */
+      virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
+                                  double &, double &) const
+      {
+        itkExceptionMacro("This method not implemented");
+        return VectorType();
+      }
 
-  virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
-                              double&, double & ) const;
+      virtual double Energy(unsigned int, unsigned int, const ParticleSystemType *) const
+      {
+        itkExceptionMacro("This method not implemented");
+        return 0.0;
+      } */
 
-  inline virtual VectorType Evaluate(unsigned int a, unsigned int b, const ParticleSystemType *c,
-                                     double& d) const
-  {
-      double e;
-      return this->Evaluate(a, b, c, d, e);
-  }
+    virtual VectorType Evaluate(unsigned int, unsigned int, const ParticleSystemType *,
+                                double&, double & ) const;
 
-  inline virtual double Energy(unsigned int a, unsigned int b, const ParticleSystemType *c) const
-  {
-      double d, e;
-      this->Evaluate(a, b, c, d, e);
-      return e;
-  }
+    VectorType EvaluateGaussian(unsigned int, unsigned int, const ParticleSystemType *,
+                                double&, double & ) const;
+    VectorType EvaluateCotan(unsigned int, unsigned int, const ParticleSystemType *,
+                             double&, double & ) const;
+
+    inline virtual VectorType Evaluate(unsigned int a, unsigned int b, const ParticleSystemType *c,
+                                       double& d) const
+    {
+        double e;
+        return this->Evaluate(a, b, c, d, e);
+    }
+
+    inline virtual double Energy(unsigned int a, unsigned int b, const ParticleSystemType *c) const
+    {
+        double d, e;
+        this->Evaluate(a, b, c, d, e);
+        return e;
+    }
 
 
-  virtual void ResetBuffers()
-  {
-    m_SpatialSigmaCache->ZeroAllValues();
-  }
+    virtual void ResetBuffers()
+    {
+        m_SpatialSigmaCache->ZeroAllValues();
+    }
     
-  
-  /** Estimate the best sigma for Parzen windowing in a given neighborhood.
-      The best sigma is the sigma that maximizes probability at the given point  */
-  virtual double EstimateSigma(unsigned int, const typename ParticleSystemType::PointVectorType &,
-                                const std::vector<double> &,
-                                    const PointType &, double,  double,  int &err) const;
 
-  /** Returns a weighting coefficient based on the angle between two
+    /** Estimate the best sigma for Parzen windowing in a given neighborhood.
+      The best sigma is the sigma that maximizes probability at the given point  */
+    virtual double EstimateSigma(unsigned int, const typename ParticleSystemType::PointVectorType &,
+                                 const std::vector<double> &,
+                                 const PointType &, double,  double,  int &err) const;
+
+    /** Returns a weighting coefficient based on the angle between two
      vectors. Weights smoothly approach zero as the angle between two
      normals approaches 90 degrees. */
-  TGradientNumericType AngleCoefficient(const GradientVectorType&,
-                                        const GradientVectorType&) const;
-  
-  /** The minimum radius of the neighborhood of points that are
+    TGradientNumericType AngleCoefficient(const GradientVectorType&,
+                                          const GradientVectorType&) const;
+
+    /** The minimum radius of the neighborhood of points that are
       considered in the entropy calculation. The neighborhood is a
       spherical radius in 3D space. The actual radius used in a
       calculation may exceed this value, but will not exceed the
@@ -175,12 +218,12 @@ public:
       spacing in the image.  A good value is typically 5x the spacing
       of the highest-resolution dimension (the dimension with the
       smallest spacing. */
-  void SetMinimumNeighborhoodRadius( double s)
-  { m_MinimumNeighborhoodRadius = s; }
-  double GetMinimumNeighborhoodRadius() const
-  { return m_MinimumNeighborhoodRadius; }
+    void SetMinimumNeighborhoodRadius( double s)
+    { m_MinimumNeighborhoodRadius = s; }
+    double GetMinimumNeighborhoodRadius() const
+    { return m_MinimumNeighborhoodRadius; }
 
-  /** Maximum radius of the neighborhood of points that are considered
+    /** Maximum radius of the neighborhood of points that are considered
       in the calculation. The neighborhood is a spherical radius in 3D
       space. MaximumNeighborhoodRadius should be set to a value
       equal-to or less-than the length of the largest dimension of the
@@ -188,12 +231,12 @@ public:
       since this class cannot know by default the size of input
       images. The radius value should be specified in real-world
       coordinates. */
-  void SetMaximumNeighborhoodRadius( double s)
-  { m_MaximumNeighborhoodRadius = s; }
-  double GetMaximumNeighborhoodRadius() const
-  { return m_MaximumNeighborhoodRadius; }
+    void SetMaximumNeighborhoodRadius( double s)
+    { m_MaximumNeighborhoodRadius = s; }
+    double GetMaximumNeighborhoodRadius() const
+    { return m_MaximumNeighborhoodRadius; }
 
-  /** The influence of particle neighbors on each other is weighted by
+    /** The influence of particle neighbors on each other is weighted by
       the angle between the surface normals at their respective
       positions.  The "flat cutoff" parameter adjusts the degree to
       which surface normals must differ before the weighting kicks in.
@@ -204,12 +247,12 @@ public:
       work for most applications.  It is not necessary to set or tune
       this parameter unless you would like to tweak performance on a
       particular dataset. */
-  void SetFlatCutoff(double s)
-  { m_FlatCutoff = s; }
-  double GetFlatCutoff() const
-  { return m_FlatCutoff; }
+    void SetFlatCutoff(double s)
+    { m_FlatCutoff = s; }
+    double GetFlatCutoff() const
+    { return m_FlatCutoff; }
 
-  /** NeighborhoodToSigmaRatio defines the extent of a given
+    /** NeighborhoodToSigmaRatio defines the extent of a given
       particle's neighborhood.  A particle only interacts with
       neighbors in this neighborhood.  All other particles on the
       surface are ignored.  The neighborhood extent is computed as a
@@ -218,43 +261,113 @@ public:
       that should work well for most data.  It is not necessary to set
       or tune this parameter unless you would like to tweak
       performance for a particular dataset. */
-  void SetNeighborhoodToSigmaRatio(double s)
-  { m_NeighborhoodToSigmaRatio = s; }
-  double GetNeighborhoodToSigmaRatio() const
-  { return m_NeighborhoodToSigmaRatio; }
+    void SetNeighborhoodToSigmaRatio(double s)
+    { m_NeighborhoodToSigmaRatio = s; }
+    double GetNeighborhoodToSigmaRatio() const
+    { return m_NeighborhoodToSigmaRatio; }
 
-  /**Access the cache of sigma values for each particle position.  This cache
+    /**Access the cache of sigma values for each particle position.  This cache
      is populated by registering this object as an observer of the correct
      particle system (see SetParticleSystem).*/
-  void SetSpatialSigmaCache( SigmaCacheType *s)
-  {    m_SpatialSigmaCache = s;  }
-  SigmaCacheType *GetSpatialSigmaCache()
-  {   return  m_SpatialSigmaCache.GetPointer();  }
-  const SigmaCacheType *GetSpatialSigmaCache() const
-  {   return  m_SpatialSigmaCache.GetPointer();  }
+    void SetSpatialSigmaCache( SigmaCacheType *s)
+    {    m_SpatialSigmaCache = s;  }
+    SigmaCacheType *GetSpatialSigmaCache()
+    {   return  m_SpatialSigmaCache.GetPointer();  }
+    const SigmaCacheType *GetSpatialSigmaCache() const
+    {   return  m_SpatialSigmaCache.GetPointer();  }
 
-  /** Compute a set of weights based on the difference in the normals of a
+    /** Compute a set of weights based on the difference in the normals of a
       central point and each of its neighbors.  Difference of > 90 degrees
       results in a weight of 0. */
-  void ComputeAngularWeights(const PointType &,
-                             const typename ParticleSystemType::PointVectorType &,
-                             const PSMImageDomainWithGradients<TGradientNumericType, VDimension> *,
-                             std::vector<double> &) const;
-  
+    void ComputeAngularWeights(const PointType &,
+                               const typename ParticleSystemType::PointVectorType &,
+                               const PSMImageDomainWithGradients<TGradientNumericType, VDimension> *,
+                               std::vector<double> &) const;
+
+
+    /** MODIFIED COTAN POTENTIAL RELATED FUNCTIONS */
+
+    /** Set/Get the pairwise potential type
+     **/
+    void SetPairwisePotentialType(std::string pairwise_potential)
+    { m_PairwisePotentialType = pairwise_potential;}
+
+    std::string GetPairwisePotentialType() const
+    { return m_PairwisePotentialType; }
+
+    /** Set/Get number of domains per shape for shape complexes
+    */
+    void SetDomainsPerShape(int i)
+    { m_DomainsPerShape = i; }
+    int GetDomainsPerShape() const
+    { return m_DomainsPerShape; }
+
+    /** Set/Get the global sigma for cotan potential
+    */
+    void SetGlobalSigma(double gsigma)
+    { m_GlobalSigma = gsigma; }
+    double GetGlobalSigma() const
+    { return m_GlobalSigma; }
+
+    /** Estimate the best sigma for Parzen windowing.
+     * This is almost twice the average distance to the nearest 6 neigbhors (hexagonal packing) */
+    void EstimateGlobalSigma(const ParticleSystemType * system);
+
+    /** Compute the modified cotangent function
+     */
+    inline double ComputeModifiedCotangent(double rij)const
+    {
+        if (rij > m_GlobalSigma)
+            return 0.0;
+
+        const double epsilon = 1.0e-6;
+
+        double r     = itk::Math::pi_over_2 * rij/(m_GlobalSigma + epsilon) ;
+        double cotan = cos(r)/(sin(r) + epsilon);
+        double val   = cotan + r - itk::Math::pi_over_2;
+        return val;
+    }
+
+    /** Compute the derivative of the modified cotangent function
+     */
+    inline double ComputeModifiedCotangentDerivative(double rij)const
+    {
+        if (rij > m_GlobalSigma)
+            return 0.0;
+
+        const double epsilon = 1.0e-6;
+
+        double r = itk::Math::pi_over_2 * rij/(m_GlobalSigma + epsilon) ;
+
+        double sin_2 = 1.0 / ( pow(sin(r),2.0) + epsilon);
+        double val   = -1.0 * (itk::Math::pi_over_2 * (1.0 / (m_GlobalSigma+epsilon) ) ) * (1 - sin_2);
+        return val;
+    }
+
+    /** Estimate the global sigma before the solver iteration given the current particle configurat
+     *  in case of using cotan pairwise potential
+     */
+    virtual void BeforeIteration();
+
 protected:
- PSMParticleEntropyFunction() : m_MinimumNeighborhoodRadius(5.0),
-    m_MaximumNeighborhoodRadius(1024.0), m_FlatCutoff(0.3), 
-    m_NeighborhoodToSigmaRatio(3.0) {}
+    PSMParticleEntropyFunction() : m_MinimumNeighborhoodRadius(5.0),
+        m_MaximumNeighborhoodRadius(1024.0), m_FlatCutoff(0.3),
+        m_NeighborhoodToSigmaRatio(3.0), m_GlobalSigma(-1.0) {}
 
-  virtual ~PSMParticleEntropyFunction() {}
-  void operator=(const PSMParticleEntropyFunction &);
-  PSMParticleEntropyFunction(const PSMParticleEntropyFunction &);
+    virtual ~PSMParticleEntropyFunction() {}
+    void operator=(const PSMParticleEntropyFunction &);
+    PSMParticleEntropyFunction(const PSMParticleEntropyFunction &);
 
-  double m_MinimumNeighborhoodRadius;
-  double m_MaximumNeighborhoodRadius;
-  double m_FlatCutoff;
-  double m_NeighborhoodToSigmaRatio;
-  typename SigmaCacheType::Pointer m_SpatialSigmaCache;
+    double m_MinimumNeighborhoodRadius;
+    double m_MaximumNeighborhoodRadius;
+    double m_FlatCutoff;
+    double m_NeighborhoodToSigmaRatio;
+    typename SigmaCacheType::Pointer m_SpatialSigmaCache;
+
+    /** MODIFIED COTAN POTENTIAL RELATED VARIABLES */
+    std::string m_PairwisePotentialType;
+    double m_GlobalSigma;
+    int m_DomainsPerShape;
 };
 
 

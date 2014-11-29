@@ -46,6 +46,9 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::PSMEntropyModelFilter()
     m_ParticleEntropyFunction
             = PSMParticleEntropyFunction<typename ImageType::PixelType, Dimension>::New();
 
+    // Set the number of domains per shape for the particle entropy function
+    m_ParticleEntropyFunction->SetDomainsPerShape(1);
+
     // Now initialize the Shape Space entropy function and point it to
     // the Shape Matrix attribute.  The Shape Space entropy function
     // computes entropy of the shape samples in n-dimensional shape
@@ -228,6 +231,12 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
         if ((m_NumberOfScales > 1) && (scale != m_NumberOfScales-1) )
         {
             m_ParticleSystem->SplitAllParticles(this->GetInput()->GetSpacing()[0] * 1.0);
+
+            // a new scale/split, so the pairwise distance between particles could change
+            // set a negative values to the particle's global sigma in case
+            // using the cotan pairwise potential
+            if(m_ParticleEntropyFunction->GetPairwisePotentialType() == "cotan")
+                m_ParticleEntropyFunction->SetGlobalSigma(-1.0f);
         }
 
     }

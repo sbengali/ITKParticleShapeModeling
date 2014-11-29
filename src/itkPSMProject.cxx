@@ -34,6 +34,7 @@ const std::string PSMProject::scale_tag               = "scale";
 const std::string PSMProject::scale_number_tag        = "number";
 const std::string PSMProject::variables_tag           = "variables";
 const std::string PSMProject::optimizer_tag           = "optimizer";
+const std::string PSMProject::pairwise_potential_tag  = "pairwise_potential";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -87,6 +88,26 @@ std::string PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+std::string PSMProject
+::GetPairwisePotentialType() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(pairwise_potential_tag))
+        {
+            return opt->GetAttribute(pairwise_potential_tag);
+        }
+        else
+        {
+            itkExceptionMacro("Pairwise potential not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
 bool PSMProject
 ::HasOptimizationAttribute(const std::string& name, unsigned int s) const
 {
@@ -129,10 +150,20 @@ bool PSMProject
                 }
             }
         }
+
         if(name == optimizer_tag)
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
             if (opt->HasAttribute(optimizer_tag))
+                return true;
+            else
+                return false;
+        }
+
+        if(name == pairwise_potential_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(pairwise_potential_tag))
                 return true;
             else
                 return false;

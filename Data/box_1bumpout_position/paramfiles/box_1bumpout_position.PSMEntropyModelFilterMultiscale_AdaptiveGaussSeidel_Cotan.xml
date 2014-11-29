@@ -29,24 +29,28 @@
     
     <!-- The optimized output model -->
     <model name = "optimized">
-      pdm/box_1bumpout_position.00.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.01.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.02.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.03.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.04.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.05.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.06.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.07.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.08.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.09.optimized_adaptive_gauss_seidel.lpts
-      pdm/box_1bumpout_position.10.optimized_adaptive_gauss_seidel.lpts
+      pdm/box_1bumpout_position.00.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.01.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.02.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.03.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.04.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.05.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.06.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.07.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.08.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.09.optimized_adaptive_gauss_seidel_cotan.lpts
+      pdm/box_1bumpout_position.10.optimized_adaptive_gauss_seidel_cotan.lpts
     </model>
   </data>
   
   <initialization algorithm="splitting">
   </initialization>
   
-  <optimization algorithm="basic" number_of_scales = "12" optimizer = "adaptive_gauss_seidel" >
+  <optimization algorithm          = "basic" 
+		number_of_scales   = "12" 
+		optimizer          = "adaptive_gauss_seidel" 
+		pairwise_potential = "cotan"
+		>
     <scale number = "0"
            regularization_initial   = "10.0"
            regularization_final     = "1.0" 

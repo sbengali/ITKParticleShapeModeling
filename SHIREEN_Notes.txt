@@ -8,7 +8,7 @@ TODO:
 (5) Mixtures stuff
 
 ---------------------------------------------------------------------------------------
-Nov 29th, 2014 - Allowing the control of the type of the optimizer from the parameter file -- commited
+Nov 28th, 2014 - Allowing the control of the type of the optimizer from the parameter file -- commited
 ---------------------------------------------------------------------------------------
 
 (1) Added "optimizer" attribute to the optimization tag which take "jacobi" or "gauss_seidel" values
@@ -20,7 +20,7 @@ Nov 29th, 2014 - Allowing the control of the type of the optimizer from the para
     supplied optimizer type, default is jacobi
     
 ---------------------------------------------------------------------------------------
-Nov 29th, 2014 - Adding Adaptive Gauss Seidel optimization (without bad moves) 
+Nov 28th, 2014 - Adding Adaptive Gauss Seidel optimization (without bad moves) 
 ---------------------------------------------------------------------------------------
 
 (1) Added to PSMGradientDescentOptimizer SetModeToAdaptiveGaussSeidel function (m_OptimizationMode = 2)
@@ -32,3 +32,37 @@ Nov 29th, 2014 - Adding Adaptive Gauss Seidel optimization (without bad moves)
 (5) Added to PSMParticleEntropyFunction an Evaluate function which returns the energy
 (6) Modified PSMParticleEntropyFunction::Evaluate to call the new Evaluate function with energy in order not to repeat the same code
 (7) Added Energy function to PSMParticleEntropyFunction
+
+
+---------------------------------------------------------------------------------------
+Nov 28th, 2014 - Updating the particle entropy function to enable modified cotan potential
+---------------------------------------------------------------------------------------
+
+(1) Added "pairwise_potential" attribute to the optimization tag which take "gaussian" or "cotan" values
+(2) Added to PSMProject pairwise_potential_tag
+(3) Modified HasOptimizationAttribute to check for the pairwise_potential_tag
+(4) Added GetPairwisePotentialType function to the PSMProject
+(5) Added to PSMParticleEntropyFunction a new member variable (m_PairwisePotentialType) to switch between gaussian and cotan potentials
+(6) Added the set/get functions for m_PairwisePotentialType
+(7) Modified PSMCommandLineClass::ReadInputs to set the pairwise potential type of the particle entropy function
+    according to the supplied potential type, default is gaussian
+(8) Edited PSMParticleEntropyFunction class description to add details about the modified cotan potential
+(9) Added to PSMParticleEntropyFunction functions to compute the modified cotan function and its derivative 
+    their names are ComputeModifiedCotangent and ComputeModifiedCotangentDerivative, respectively.
+(10) Added m_GlobalSigma to PSMParticleEntropyFunction to maintain the global sigma defined based on hexagonal packing
+(11) Added m_DomainsPerShape to PSMParticleEntropyFunction to enable computing the global sigma
+(12) Added the set/get functions of the m_DomainsPerShape
+(13) Modified the constructor of PSMEntropyModelFilter to set domains per shape for the PSMParticleEntropyFunction
+(14) Added to PSMParticleEntropyFunction EstimateGlobalSigma function
+(15) Added to PSMParticleEntropyFunction typedefs related to kdtree based distance estimation for global sigma estimation
+(16) Added to PSMParticleEntropyFunction the implementation of BeforeIteration to compute the global sigma given the current
+     particle configuration in case of using cotan pairwise potential
+(17) Modified PSMParticleEntropyFunction constructor to initiate m_GlobalSigma
+(18) Modified PSMEntropyModelFilter::GenerateData to initialize the global sigma with -1 each time a split is done 
+     This is to trigger the computation of the global sigma which changes when splitting the particles (a new scale).
+(19) Added to PSMParticleEntropyFunction Set/Get for the m_GlobalSigma
+(20) Added to PSMParticleEntropyFunction EvaluateGaussian and EvaluateCotan functions where Evaluate fuction was 
+     modified to call one of them according to the pairwise potential type
+     
+
+  
