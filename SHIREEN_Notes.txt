@@ -1,10 +1,10 @@
 -------------
 TODO:
 -------------
-(1) Modified Cotan potential for surface sampling energy
+(1) Modified Cotan potential for surface sampling energy -- DONE
 (2) Automatic starting regularization
-(3) svd-based inverse
-(4) Adaptive Gauss Seidel optimization (without bad moves)
+(3) svd-based inverse  -- DONE
+(4) Adaptive Gauss Seidel optimization (without bad moves)  -- DONE
 (5) Mixtures stuff
 
 ---------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ Nov 29th, 2014 - Updating the particle entropy function to enable modified cotan
      modified to call one of them according to the pairwise potential type
      
 ---------------------------------------------------------------------------------------
-Nov 29th, 2014 - Using svd-based matrix inverse
+Nov 29th, 2014 - Using svd-based matrix inverse -- commited
 ---------------------------------------------------------------------------------------
 
 (1) Added "inverse_method" attribute to the optimization tag which take "svd" or "eig" values  

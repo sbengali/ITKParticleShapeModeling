@@ -158,8 +158,7 @@ PSMShapeEntropyFunction<VDimension>
         }
         for (int i = 0; i < (int)num_samples; i++)
         {
-            int tmp = num_samples - i - 1;
-            m_ShapePCAVariances[i] = fabs(svdA.W(tmp, tmp)) - m_MinimumVariance;
+            m_ShapePCAVariances[i] = fabs(svdA.W(i, i)) - m_MinimumVariance;
         }
     }
 }

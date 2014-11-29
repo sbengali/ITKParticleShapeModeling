@@ -503,6 +503,8 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
                 // not that much change, probably same number of particles, don't change the global sigma
                 m_GlobalSigma = oldSigma;
             }
+            else
+                std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl; // reporting a new value for global sigma
         }
 
     }
