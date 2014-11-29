@@ -77,6 +77,10 @@ class ITK_EXPORT PSMCommandLineClass : public DataObject
     void ReadInputOptimizationScales();
     /** Read the optimization attribute values with no multiple scales */
     void ReadInputOptimizationParameters();
+
+    /** Read common optimization attributes for all scales */
+    void ReadInputCommonOptimizationAttributes();
+
     /** Write out the optimized point sets to user specified files */
     void WriteOutputs(std::string output_path);
     /** Run the steps of the optimization process */

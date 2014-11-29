@@ -81,3 +81,11 @@ Nov 29th, 2014 - Using svd-based matrix inverse -- commited
 (9) Modified PSMShapeEntropyFunction::ComputeCovarianceMatrix to compute matrix inverse according to the supplied
     inverse method
   
+---------------------------------------------------------------------------------------
+Nov 29th, 2014 - Fixing some bugs -- commited
+---------------------------------------------------------------------------------------
+
+(1) Fixed a small bug related to the singular values ordering related to the svd-based inverse
+(2) Moved the read of new optimization attributes to a new function named ReadInputCommonOptimizationAttributes
+    added to PSMCommandLineClass to be able to read all common optimization attributes
+    no matter a single or multiple scales were provided

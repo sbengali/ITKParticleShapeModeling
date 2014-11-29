@@ -159,56 +159,11 @@ void PSMCommandLineClass<VDimension>
             // has to be at least one more than the number of input images?
             this->SetDefaultScales();
         }
-
-        // Check if the optimizer type has been supplied
-        if(this->m_Project->HasOptimizationAttribute("optimizer"))
-        {
-            std::string optimizer_type = this->m_Project->GetOptimizerType();
-
-            std::cout << "Optimizer type: " << optimizer_type << std::endl;
-
-            if(optimizer_type == "jacobi")
-                this->m_Filter->GetOptimizer()->SetModeToJacobi();
-            else if (optimizer_type == "gauss_seidel")
-                this->m_Filter->GetOptimizer()->SetModeToGaussSeidel();
-            else if (optimizer_type == "adaptive_gauss_seidel")
-                this->m_Filter->GetOptimizer()->SetModeToAdaptiveGaussSeidel();
-        }
-        else
-        {
-            // default is jacobi optimization
-            this->m_Filter->GetOptimizer()->SetModeToJacobi();
-        }
-
-        // Check if the pairwise potential type has been supplied
-        if(this->m_Project->HasOptimizationAttribute("pairwise_potential"))
-        {
-            std::string pairwise_potential = this->m_Project->GetPairwisePotentialType();
-
-            std::cout << "Pairwise potential: " << pairwise_potential << std::endl;
-            this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType(pairwise_potential);
-        }
-        else
-        {
-            // default is gaussian potential
-            this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType("gaussian");
-        }
-
-        // Check if the inverse method has been supplied
-        if(this->m_Project->HasOptimizationAttribute("inverse_method"))
-        {
-            std::string inverse_method = this->m_Project->GetInverseMethod();
-
-            std::cout << "Inverse method: " << inverse_method << std::endl;
-            this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod(inverse_method);
-        }
-        else
-        {
-            // default is gaussian potential
-            this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod("eig");
-        }
-
     }
+
+    // read common optimization attributes no matter a single or multiple scales were provided
+    // default values will be used in case an attribute was not provided
+    this->ReadInputCommonOptimizationAttributes();
 }
 
 template <unsigned int VDimension>
@@ -302,6 +257,59 @@ void PSMCommandLineClass<VDimension>
     }
     // Set ParticleSystem for ProcrustesRegistration
     this->m_ProcrustesRegistration->SetPSMParticleSystem(this->m_Filter->GetParticleSystem());
+}
+
+template <unsigned int VDimension>
+void PSMCommandLineClass<VDimension>
+::ReadInputCommonOptimizationAttributes()
+{
+    // Check if the optimizer type has been supplied
+    if(this->m_Project->HasOptimizationAttribute("optimizer"))
+    {
+        std::string optimizer_type = this->m_Project->GetOptimizerType();
+
+        std::cout << "Optimizer type: " << optimizer_type << std::endl;
+
+        if(optimizer_type == "jacobi")
+            this->m_Filter->GetOptimizer()->SetModeToJacobi();
+        else if (optimizer_type == "gauss_seidel")
+            this->m_Filter->GetOptimizer()->SetModeToGaussSeidel();
+        else if (optimizer_type == "adaptive_gauss_seidel")
+            this->m_Filter->GetOptimizer()->SetModeToAdaptiveGaussSeidel();
+    }
+    else
+    {
+        // default is jacobi optimization
+        this->m_Filter->GetOptimizer()->SetModeToJacobi();
+    }
+
+    // Check if the pairwise potential type has been supplied
+    if(this->m_Project->HasOptimizationAttribute("pairwise_potential"))
+    {
+        std::string pairwise_potential = this->m_Project->GetPairwisePotentialType();
+
+        std::cout << "Pairwise potential: " << pairwise_potential << std::endl;
+        this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType(pairwise_potential);
+    }
+    else
+    {
+        // default is gaussian potential
+        this->m_Filter->GetParticleEntropyFunction()->SetPairwisePotentialType("gaussian");
+    }
+
+    // Check if the inverse method has been supplied
+    if(this->m_Project->HasOptimizationAttribute("inverse_method"))
+    {
+        std::string inverse_method = this->m_Project->GetInverseMethod();
+
+        std::cout << "Inverse method: " << inverse_method << std::endl;
+        this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod(inverse_method);
+    }
+    else
+    {
+        // default is gaussian potential
+        this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod("eig");
+    }
 }
 
 template <unsigned int VDimension>
