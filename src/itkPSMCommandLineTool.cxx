@@ -25,18 +25,18 @@
 int main( int argc, char *argv[] )
 {
     // hack to debug
-    argc    = 5;
+    //argc    = 5;
 
     //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale.xml";
     //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel.xml";
     //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel.xml";
     //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan.xml";
     //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_svd.xml";
-    argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_svd_autoreg.xml";
+    //argv[1] = (char*) "../Data/box_1bumpout_position/paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_svd_autoreg.xml";
 
-    argv[2] = (char*) "3";
-    argv[3] = (char*) "../Data/box_1bumpout_position/";
-    argv[4] = (char*) "../Data/box_1bumpout_position/";
+    //argv[2] = (char*) "3";
+    //argv[3] = (char*) "../Data/box_1bumpout_position/";
+    //argv[4] = (char*) "../Data/box_1bumpout_position/";
 
     int dim = 0;
     std::string output_path = "";

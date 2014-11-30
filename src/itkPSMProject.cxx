@@ -37,6 +37,7 @@ const std::string PSMProject::optimizer_tag           = "optimizer";
 const std::string PSMProject::pairwise_potential_tag  = "pairwise_potential";
 const std::string PSMProject::inverse_method_tag      = "inverse_method";
 const std::string PSMProject::regularization_initial_mode_tag    = "regularization_initial_mode";
+const std::string PSMProject::shape_entropy_weight_tag           = "shape_entropy_weight";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -150,6 +151,27 @@ std::string PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+double PSMProject
+::GetShapeEntropyWeighting() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(shape_entropy_weight_tag))
+        {
+            double weight = static_cast<double>(atof(opt->GetAttribute(shape_entropy_weight_tag).c_str()));
+            return weight;
+        }
+        else
+        {
+            itkExceptionMacro("Shape entropy weight not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
 bool PSMProject
 ::HasOptimizationAttribute(const std::string& name, unsigned int s) const
 {
@@ -226,6 +248,16 @@ bool PSMProject
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
             if (opt->HasAttribute(regularization_initial_mode_tag))
+                return true;
+            else
+                return false;
+
+        }
+
+        if(name == shape_entropy_weight_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(shape_entropy_weight_tag))
                 return true;
             else
                 return false;

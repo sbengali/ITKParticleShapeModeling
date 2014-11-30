@@ -6,8 +6,8 @@
 
 project(ITKParticleShapeModeling)
 cmake_minimum_required(VERSION 2.6)
-SET(CMAKE_BUILD_TYPE Debug)
-#SET(CMAKE_BUILD_TYPE Release)
+#SET(CMAKE_BUILD_TYPE Debug)
+SET(CMAKE_BUILD_TYPE Release)
 
 SET(ITK_DIR /scratch/TOOLKITS/InsightToolkit-4.5.0-build/)
 INCLUDE (${CMAKE_ROOT}/Modules/FindITK.cmake)

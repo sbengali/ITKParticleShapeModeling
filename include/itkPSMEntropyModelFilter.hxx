@@ -193,6 +193,8 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
     {
         m_CurrentScale = scale;
 
+        this->SetShapeEntropyWeighting(m_ShapeEntropyWeight);
+
         // Set up the optimization parameters for this scale, unless
         // this is a restart from a previous call to GenerateData. This
         // section deals with convergence criteria.

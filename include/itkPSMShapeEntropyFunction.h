@@ -202,6 +202,10 @@ public:
     std::string GetInverseMethod() const
     { return m_InverseMethod; }
 
+    /** Get the current correspondence energy */
+    double GetCurrentEnergy() const
+    { return m_CurrentEnergy;}
+
 protected:
     PSMShapeEntropyFunction()
     {

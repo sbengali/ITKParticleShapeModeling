@@ -528,6 +528,14 @@ public:
     std::string GetRegularizationInitialMode()
     { return m_RegularizationInitialMode;}
 
+    /** Set/Get the shape entropy weight
+     */
+    void SetShapeEntropyWeight(double weight)
+    { m_ShapeEntropyWeight = weight; }
+
+    double GetShapeEntropyWeight()
+    { return m_ShapeEntropyWeight;}
+
 protected:
     PSMEntropyModelFilter();
     virtual ~PSMEntropyModelFilter() {};
@@ -665,6 +673,9 @@ private:
 
     /** The initial regularization mode */
     std::string m_RegularizationInitialMode;
+
+    /** The shape entropy weight, this weights the correspondence part of the energy function */
+    double m_ShapeEntropyWeight;
 };
 
 } // end namespace itk

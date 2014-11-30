@@ -91,7 +91,7 @@ Nov 29th, 2014 - Fixing some bugs -- commited
     no matter a single or multiple scales were provided
 
 ---------------------------------------------------------------------------------------
-Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectrum of the shape covariance matrix
+Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectrum of the shape covariance matrix -- committed
 ---------------------------------------------------------------------------------------
 
 (1) Added to PSMEntropyModelFilter a function named ComputeShapeMatrixRegularizationTerm to compute the regularization
@@ -110,6 +110,21 @@ Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectru
 (10) Fixed bug: only compute the global sigma for cotan potential whenever we have a new split then stay with this
 
 
+---------------------------------------------------------------------------------------
+Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting
+---------------------------------------------------------------------------------------
+
+(1) Added "shape_entropy_weight" attribute to the optimization tag which take "auto" or "manual" values  
+(2) Added to PSMProject shape_entropy_weight_tag
+(3) Modified HasOptimizationAttribute to check for the shape_entropy_weight_tag
+(4) Added GetShapeEntropyWeighting function to the PSMProject
+(5) Added to PSMEntropyModelFilter a new member variable m_ShapeEntropyWeight
+(6) Added set/get of m_ShapeEntropyWeight
+(7) Modified PSMCommandLineClass::ReadInputCommonOptimizationAttributes to set the shape entropy weighting according to the user input,
+    default is 1.0
+(8) Modified PSMEntropyModelFilter::GenerateData to set up the shape entropy weighting at every scale
+(9) Added to PSMShapeEntropyFunction a function to get the current correspondence energy named as GetCurrentEnergy
+    in order to be able to report it on the terminal along with the Eigenmode variances
 
     
 

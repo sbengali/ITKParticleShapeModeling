@@ -74,6 +74,7 @@ namespace itk
   static const std::string             pairwise_potential_tag;
   static const std::string                 inverse_method_tag;
   static const std::string    regularization_initial_mode_tag;
+  static const std::string           shape_entropy_weight_tag;
 
 
   /** Set the DOM node object, which contains the XML tree of
@@ -131,6 +132,10 @@ namespace itk
   /** Returns the initial regularization mode
    **/
   std::string GetRegularizationInitialMode() const;
+
+  /** Returns the shape entropy weighting
+   */
+  double GetShapeEntropyWeighting() const;
 
   /** Returns true if the optimization_tag element includes the given
       parameter at the given scale (optional).  Also returns false if

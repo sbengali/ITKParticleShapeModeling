@@ -55,18 +55,19 @@ void PSMCommandLineClass<VDimension>
     }
     PSMEntropyModelFilter<PSMCommandLineClass::ImageType> *o
             = static_cast<PSMEntropyModelFilter<PSMCommandLineClass::ImageType> *>(caller);
+
     // Print every 50 iterations
     if (o->GetNumberOfElapsedIterations() % 50 != 0) return;
 
-    std::cout << "Scale # " << o->GetCurrentScale() << std::endl;
-    std::cout << "Iteration # " << o->GetNumberOfElapsedIterations() << std::endl;
-    std::cout << " Eigenmode variances: ";
+    std::cout << "Scale # " << o->GetCurrentScale() << ", Iteration # " << o->GetNumberOfElapsedIterations() << std::endl;
+    std::cout << "\tEigenmode variances: ";
     for (unsigned int i = 0; i < o->GetShapePCAVariances().size(); i++)
     {
         std::cout << o->GetShapePCAVariances()[i] << " ";
     }
     std::cout << std::endl;
-    std::cout << " Regularization = " << o->GetRegularizationConstant() << std::endl;
+    std::cout << "\tRegularization = " << o->GetRegularizationConstant() << std::endl;
+    std::cout << "\tCorrespondence Energy = " << o->GetShapeEntropyFunction()->GetCurrentEnergy() << std::endl;
 }
 
 template <unsigned int VDimension>
@@ -323,6 +324,20 @@ void PSMCommandLineClass<VDimension>
     {
         // default is manual
         this->m_Filter->SetRegularizationInitialMode("manual");
+    }
+
+    // Check if the shape entropy weight has been supplied
+    if(this->m_Project->HasOptimizationAttribute("shape_entropy_weight"))
+    {
+        double weight = this->m_Project->GetShapeEntropyWeighting();
+
+        std::cout << "Shape entropy weight: " << weight << std::endl;
+        this->m_Filter->SetShapeEntropyWeight(weight);
+    }
+    else
+    {
+        // default is 1.0
+        this->m_Filter->SetShapeEntropyWeight(1.0f);
     }
 }
 
