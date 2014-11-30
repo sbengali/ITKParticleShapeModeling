@@ -59,20 +59,21 @@ namespace itk
   itkTypeMacro(PSMProject, Object);
 
   /** Reserved keywords for use in XML parameter files. */
-  static const std::string                data_tag;
-  static const std::string distance_transforms_tag;
-  static const std::string               model_tag;
-  static const std::string                name_tag;
-  static const std::string        optimization_tag;
-  static const std::string    number_of_scales_tag;
-  static const std::string       preprocessing_tag;
-  static const std::string         psm_project_tag;
-  static const std::string               scale_tag;
-  static const std::string        scale_number_tag;
-  static const std::string           variables_tag;
-  static const std::string           optimizer_tag;
-  static const std::string  pairwise_potential_tag;
-  static const std::string      inverse_method_tag;
+  static const std::string                           data_tag;
+  static const std::string            distance_transforms_tag;
+  static const std::string                          model_tag;
+  static const std::string                           name_tag;
+  static const std::string                   optimization_tag;
+  static const std::string               number_of_scales_tag;
+  static const std::string                  preprocessing_tag;
+  static const std::string                    psm_project_tag;
+  static const std::string                          scale_tag;
+  static const std::string                   scale_number_tag;
+  static const std::string                      variables_tag;
+  static const std::string                      optimizer_tag;
+  static const std::string             pairwise_potential_tag;
+  static const std::string                 inverse_method_tag;
+  static const std::string    regularization_initial_mode_tag;
 
 
   /** Set the DOM node object, which contains the XML tree of
@@ -126,6 +127,10 @@ namespace itk
   /** Returns the method to be used for computing inverse of matrices (covariances in particular)
    **/
   std::string GetInverseMethod() const;
+
+  /** Returns the initial regularization mode
+   **/
+  std::string GetRegularizationInitialMode() const;
 
   /** Returns true if the optimization_tag element includes the given
       parameter at the given scale (optional).  Also returns false if

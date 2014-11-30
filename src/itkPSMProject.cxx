@@ -36,6 +36,7 @@ const std::string PSMProject::variables_tag           = "variables";
 const std::string PSMProject::optimizer_tag           = "optimizer";
 const std::string PSMProject::pairwise_potential_tag  = "pairwise_potential";
 const std::string PSMProject::inverse_method_tag      = "inverse_method";
+const std::string PSMProject::regularization_initial_mode_tag    = "regularization_initial_mode";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -129,6 +130,26 @@ std::string PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+std::string PSMProject
+::GetRegularizationInitialMode() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(regularization_initial_mode_tag))
+        {
+            return opt->GetAttribute(regularization_initial_mode_tag);
+        }
+        else
+        {
+            itkExceptionMacro("Inverse method not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
 bool PSMProject
 ::HasOptimizationAttribute(const std::string& name, unsigned int s) const
 {
@@ -195,6 +216,16 @@ bool PSMProject
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
             if (opt->HasAttribute(inverse_method_tag))
+                return true;
+            else
+                return false;
+
+        }
+
+        if(name == regularization_initial_mode_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(regularization_initial_mode_tag))
                 return true;
             else
                 return false;

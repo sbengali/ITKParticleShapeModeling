@@ -485,27 +485,27 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
 {
     if(m_PairwisePotentialType == "cotan")
     {
-        if(m_GlobalSigma < 0.0)
+        if(m_GlobalSigma <= 0.0)
         {
             // only compute sigma once during the optimization of a specific scale
             this->EstimateGlobalSigma(this->GetParticleSystem());
             std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl;
         }
-        else
-        {
-            // compute the global sigma for the whole particle system using its current status (particles position)
-            double oldSigma = m_GlobalSigma;
-            this->EstimateGlobalSigma(this->GetParticleSystem());
+        //        else
+        //        {
+        //            // compute the global sigma for the whole particle system using its current status (particles position)
+        //            double oldSigma = m_GlobalSigma;
+        //            this->EstimateGlobalSigma(this->GetParticleSystem());
 
-            // make sure that we update the global sigma at the beginning (in the constructor, it is -1)
-            if ( (abs(oldSigma - m_GlobalSigma)/m_GlobalSigma) < 0.1)
-            {
-                // not that much change, probably same number of particles, don't change the global sigma
-                m_GlobalSigma = oldSigma;
-            }
-            else
-                std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl; // reporting a new value for global sigma
-        }
+        //            // make sure that we update the global sigma at the beginning (in the constructor, it is -1)
+        //            if ( (abs(oldSigma - m_GlobalSigma)/m_GlobalSigma) < 0.1)
+        //            {
+        //                // not that much change, probably same number of particles, don't change the global sigma
+        //                m_GlobalSigma = oldSigma;
+        //            }
+        //            else
+        //                std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl; // reporting a new value for global sigma
+        //        }
 
     }
 

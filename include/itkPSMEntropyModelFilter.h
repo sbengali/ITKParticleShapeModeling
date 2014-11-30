@@ -520,6 +520,14 @@ public:
        corner of each of the input images.  */
     bool CreateSingleCorrespondence();
 
+    /** Set/Get the initial regularization mode
+     */
+    void SetRegularizationInitialMode(std::string mode)
+    { m_RegularizationInitialMode = mode; }
+
+    std::string GetRegularizationInitialMode()
+    { return m_RegularizationInitialMode;}
+
 protected:
     PSMEntropyModelFilter();
     virtual ~PSMEntropyModelFilter() {};
@@ -560,6 +568,11 @@ protected:
     /** A callback method that will be called after each iteration of
        the Solver. */
     void OptimizerIterateCallback(Object *, const EventObject &);
+
+    /** Compute the regularization term of the current shape matrix
+     */
+    double ComputeShapeMatrixRegularizationTerm();
+
 
 private:
     PSMEntropyModelFilter(const Self&); //purposely not implemented
@@ -649,6 +662,9 @@ private:
     /** The optimization tolerance for each scale.  It is resized
       on-the-fly as values are added.*/
     std::vector<double> m_Tolerances;
+
+    /** The initial regularization mode */
+    std::string m_RegularizationInitialMode;
 };
 
 } // end namespace itk

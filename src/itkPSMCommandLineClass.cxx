@@ -310,6 +310,20 @@ void PSMCommandLineClass<VDimension>
         // default is gaussian potential
         this->m_Filter->GetShapeEntropyFunction()->SetInverseMethod("eig");
     }
+
+    // Check if the regularization mode has been supplied
+    if(this->m_Project->HasOptimizationAttribute("regularization_initial_mode"))
+    {
+        std::string reg_mode = this->m_Project->GetRegularizationInitialMode();
+
+        std::cout << "Initial regularization mode: " << reg_mode << std::endl;
+        this->m_Filter->SetRegularizationInitialMode(reg_mode);
+    }
+    else
+    {
+        // default is manual
+        this->m_Filter->SetRegularizationInitialMode("manual");
+    }
 }
 
 template <unsigned int VDimension>

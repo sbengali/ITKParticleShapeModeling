@@ -89,3 +89,37 @@ Nov 29th, 2014 - Fixing some bugs -- commited
 (2) Moved the read of new optimization attributes to a new function named ReadInputCommonOptimizationAttributes
     added to PSMCommandLineClass to be able to read all common optimization attributes
     no matter a single or multiple scales were provided
+
+---------------------------------------------------------------------------------------
+Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectrum of the shape covariance matrix
+---------------------------------------------------------------------------------------
+
+(1) Added to PSMEntropyModelFilter a function named ComputeShapeMatrixRegularizationTerm to compute the regularization
+    term of the current shape matrix, this will hold the summation of positive eigen values beyond those which
+    maintain up to 97% of the shape variability in the shape space
+(2) Added "regularization_initial_mode" attribute to the optimization tag which take "auto" or "manual" values  
+(3) Added to PSMProject regularization_initial_mode_tag
+(4) Modified HasOptimizationAttribute to check for the regularization_initial_mode_tag
+(5) Added GetRegularizationInitialMode function to the PSMProject
+(6) Added to PSMEntropyModelFilter a new member variable m_RegularizationInitialMode
+(7) Added set/get of m_RegularizationInitialMode
+(8) Modified PSMCommandLineClass::ReadInputCommonOptimizationAttributes to set the regularization mode of
+    the PSMEntropyModelFilter, the default is manual
+(9) Modified PSMEntropyModelFilter::GenerateData to set up the initial regularization in case auto mode was identified
+    the final regularization is set to be initial/10
+(10) Fixed bug: only compute the global sigma for cotan potential whenever we have a new split then stay with this
+
+
+
+    
+
+
+
+
+
+
+---------------------------------------------------------------------------------------
+Nov 29th, 2014 - Enabling saving individual scales
+---------------------------------------------------------------------------------------
+
+    

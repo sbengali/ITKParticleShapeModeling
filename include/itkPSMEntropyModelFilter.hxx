@@ -202,6 +202,17 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
             m_Optimizer->SetTolerance(m_Tolerances[scale]);
             m_Optimizer->SetMaximumNumberOfIterations(m_MaximumNumberOfIterations[scale]);
 
+            // Check whether an auto initial regularization mode is required,
+            // if so, ignore the input initial regularization and compute the regularization
+            // term according to the current status of the shape matrix
+            if(m_RegularizationInitialMode == "auto")
+            {
+                m_RegularizationInitial[scale] = this->ComputeShapeMatrixRegularizationTerm();
+
+                // the final regularization is set to keep a certain ratio between final and initial
+                m_RegularizationFinal[scale] = m_RegularizationInitial[scale] * 0.1f;
+            }
+
             // Set up the exponentially-decreasing regularlization constant.  If
             // the decay span is greater than 1 iteration, then we will set up
             // the annealing approach.  Otherwise, the optimizer will simply use
@@ -326,6 +337,75 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>
         }
     }
     return ok;
+}
+
+template <class TImage, class TShapeMatrix>
+double
+PSMEntropyModelFilter<TImage, TShapeMatrix>
+::ComputeShapeMatrixRegularizationTerm()
+{
+    double RegularizationTerm = 0.0;
+
+    // NOTE: This code requires that indices be contiguous, i.e. it wont work if
+    // you start deleting particles.
+    const unsigned int num_samples = m_ShapeMatrix->cols();
+    const unsigned int num_dims    = m_ShapeMatrix->rows();
+
+    typedef vnl_vector<double> vnl_vector_type;
+    typedef vnl_matrix<double> vnl_matrix_type;
+
+    vnl_matrix_type points_minus_mean(num_dims, num_samples);
+    vnl_vector_type means(num_dims);
+
+    // Compute the covariance matrix.
+    // (A is D' in Davies paper)
+    // Compute the mean shape vector.
+    for (unsigned int j = 0; j < num_dims; j++)
+    {
+        double total = 0.0;
+        for (unsigned int i = 0; i < num_samples; i++)
+        {
+            total += m_ShapeMatrix->operator()(j, i);
+        }
+        means(j) = total/(double)num_samples;
+    }
+
+
+    for (unsigned int j = 0; j < num_dims; j++)
+    {
+        for (unsigned int i = 0; i < num_samples; i++)
+        {
+            points_minus_mean(j, i) = m_ShapeMatrix->operator()(j, i) - means(j);
+        }
+    }
+
+    vnl_matrix_type A =  points_minus_mean.transpose()
+            * points_minus_mean * (1.0/((double)(num_samples-1+1e-10)));
+
+
+    vnl_svd<double> svdA(A);
+
+    // note that for symmetric matrices, singular values and eigen values coincide
+    const double singularThreshold = 1.0e-6;
+    RegularizationTerm             = fabs(svdA.sigma_min()) + singularThreshold;
+
+    double sum    = 0.0;
+    for (unsigned int i = 0; i < num_samples; i++)
+        sum += (fabs(svdA.W(i,i)) * double(fabs(svdA.W(i,i)) > singularThreshold) );
+
+    double cumsum = 0.0;
+    unsigned int i;
+    for(i = 0 ; i < num_samples; i++)
+    {
+        cumsum += fabs(svdA.W(i,i));
+        if((cumsum/sum) >= 0.97)
+            break;
+    }
+
+    for(unsigned int ip = i+1; ip < num_samples; ip++)
+        RegularizationTerm += (fabs(svdA.W(ip,ip)) * double(fabs(svdA.W(ip,ip)) > singularThreshold));
+
+    return RegularizationTerm;
 }
 
 } // end namespace
