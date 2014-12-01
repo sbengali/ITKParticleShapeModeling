@@ -1,0 +1,103 @@
+Reading distance transforms ...
+  groom/box_1bumpin_position.00.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.01.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.02.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.03.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.04.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.05.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.06.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.07.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.08.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.09.tpSmoothDT.nrrd
+  groom/box_1bumpin_position.10.tpSmoothDT.nrrd
+Done!
+Found 12 scales. 
+Optimization parameters for scale 0: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 1: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 2: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 3: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 4: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 5: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 6: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 7: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 8: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 9: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 10: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 11: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimizer type: jacobi
+Pairwise potential: cotan
+Inverse method: svd
+Initial regularization mode: auto
+Shape entropy weight: 3
+GlobalSigma: 120.5
+GlobalSigma: 120.5
+GlobalSigma: 120.5
+GlobalSigma: 2.23143
+GlobalSigma: 1.39789
+GlobalSigma: 0.903491
+GlobalSigma: 0.748636
+GlobalSigma: 0.579524
+GlobalSigma: 0.466878
+GlobalSigma: 0.33243
+GlobalSigma: 0.244317
+GlobalSigma: 0.196098

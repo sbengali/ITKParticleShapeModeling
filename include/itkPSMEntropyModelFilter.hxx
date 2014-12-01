@@ -209,7 +209,9 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
             // term according to the current status of the shape matrix
             if(m_RegularizationInitialMode == "auto")
             {
-                m_RegularizationInitial[scale] = this->ComputeShapeMatrixRegularizationTerm();
+                // multiply by a factor > 1 to enable free motion in the early iterations of the optimization
+                // since correspondence is initially bad anyway
+                m_RegularizationInitial[scale] = 10.0f * this->ComputeShapeMatrixRegularizationTerm();
 
                 // the final regularization is set to keep a certain ratio between final and initial
                 m_RegularizationFinal[scale] = m_RegularizationInitial[scale] * 0.1f;

@@ -1,0 +1,30 @@
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW50.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW50.txt
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW50.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW50.txt
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW50.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW50.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW15.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW15.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW20.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW20.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW30.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW30.txt
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW5.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW5.txt
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW2.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW2.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW3.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW3.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW4.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW4.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW6.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW6.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW7.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW7.txt
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW8.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW8.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW3_MoreIter.xml 3 ./ ./ 2>&1 | tee log/box_1bumpin_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW3_MoreIter.txt

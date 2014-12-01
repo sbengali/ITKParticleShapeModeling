@@ -1,0 +1,58 @@
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Auto_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Auto_SW100.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Auto_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Auto_SW100.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Auto_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Auto_SW100.txt
+
+---------------------------------------
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_SW100.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Gaussian_Manual_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_GaussSeidel_Cotan_Manual_SW100.txt
+
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Gaussian_Manual_SW100.txt 
+
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW1.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW1.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW10.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW10.txt
+ITKParticleShapeModeling paramfiles/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW100.xml 3 ./ ./ 2>&1 | tee log/box_1bumpout_position.PSMEntropyModelFilterMultiscale_AdaptiveGaussSeidel_Cotan_Manual_SW100.txt
+
+
+
+

@@ -111,7 +111,7 @@ Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectru
 
 
 ---------------------------------------------------------------------------------------
-Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting
+Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting  -- committed
 ---------------------------------------------------------------------------------------
 
 (1) Added "shape_entropy_weight" attribute to the optimization tag which take "auto" or "manual" values  
@@ -127,6 +127,14 @@ Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting
     in order to be able to report it on the terminal along with the Eigenmode variances
 
     
+---------------------------------------------------------------------------------------
+Nov 30th - Dec 1st, 2014 - Testing different scenarios
+---------------------------------------------------------------------------------------
+
+(1) Running box_1bumpout for different optimizers, regularization modes and pairwise potential
+(2) Adding box_1bumpin dataset and testing different scenarios
+(3) Modified auto regularization to start with 10 times the estimated regularization term in order
+    to allow free motion during the early iterations of the splitting since coresspondence is bad initially anyway
 
 
 
