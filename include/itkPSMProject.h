@@ -75,6 +75,8 @@ namespace itk
   static const std::string                 inverse_method_tag;
   static const std::string    regularization_initial_mode_tag;
   static const std::string           shape_entropy_weight_tag;
+  static const std::string        particle_entropy_weight_tag;
+  static const std::string                      time_step_tag;
 
 
   /** Set the DOM node object, which contains the XML tree of
@@ -136,6 +138,14 @@ namespace itk
   /** Returns the shape entropy weighting
    */
   double GetShapeEntropyWeighting() const;
+
+  /** Returns the particle entropy weighting
+   */
+  double GetParticleEntropyWeighting() const;
+
+  /** Returns the time step to be used in Jacobi/Gauss Seidel iterations
+   */
+  double GetTimeStep() const;
 
   /** Returns true if the optimization_tag element includes the given
       parameter at the given scale (optional).  Also returns false if

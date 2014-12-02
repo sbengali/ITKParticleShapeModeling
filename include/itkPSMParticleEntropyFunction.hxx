@@ -352,6 +352,8 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
     double M       = epsilon;
     for (unsigned int k = 0; k < neighborhood.size(); k++)
     {
+        if (weights[k] < epsilon) continue;
+
         for (unsigned int n = 0; n < VDimension; n++)
         {
             // Note that the Neighborhood object has already filtered the
@@ -376,9 +378,8 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
         gradE[n] *= ( (-1.0/ (M * prob_xi ) ) );
     }
 
-
-    maxdt   = m_GlobalSigma * 0.1;
-    energy  = prob_xi ;
+    maxdt   = m_GlobalSigma * 0.3; // 0.1
+    energy  = 0.5 * prob_xi ;
 
     return gradE ;
 }
@@ -491,21 +492,21 @@ PSMParticleEntropyFunction<TGradientNumericType, VDimension>
             this->EstimateGlobalSigma(this->GetParticleSystem());
             std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl;
         }
-        //        else
-        //        {
-        //            // compute the global sigma for the whole particle system using its current status (particles position)
-        //            double oldSigma = m_GlobalSigma;
-        //            this->EstimateGlobalSigma(this->GetParticleSystem());
+        else
+        {
+            // compute the global sigma for the whole particle system using its current status (particles position)
+            double oldSigma = m_GlobalSigma;
+            this->EstimateGlobalSigma(this->GetParticleSystem());
 
-        //            // make sure that we update the global sigma at the beginning (in the constructor, it is -1)
-        //            if ( (abs(oldSigma - m_GlobalSigma)/m_GlobalSigma) < 0.1)
-        //            {
-        //                // not that much change, probably same number of particles, don't change the global sigma
-        //                m_GlobalSigma = oldSigma;
-        //            }
-        //            else
-        //                std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl; // reporting a new value for global sigma
-        //        }
+            // make sure that we update the global sigma at the beginning (in the constructor, it is -1)
+            if ( (abs(oldSigma - m_GlobalSigma)/m_GlobalSigma) < 0.01)
+            {
+                // not that much change, probably same number of particles, don't change the global sigma
+                m_GlobalSigma = oldSigma;
+            }
+            else
+                std::cout << "GlobalSigma: " << m_GlobalSigma << std::endl; // reporting a new value for global sigma
+        }
 
     }
 

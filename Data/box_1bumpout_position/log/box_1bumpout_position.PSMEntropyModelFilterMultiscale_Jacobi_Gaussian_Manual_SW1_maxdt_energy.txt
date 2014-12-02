@@ -1,0 +1,3 @@
+ITK exception with description: itk::ERROR: PSMProjectReader(0x1bde6c0): failed openning the input XML file
+ at location:unknown
+ in file:/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/HIGH_ORDER_CORRESPONDENCE_MODELS/ShapeWorksITK4/ITKParticleShapeModeling/src/itkPSMDOMNodeXMLReader.cxx

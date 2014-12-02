@@ -30,6 +30,14 @@
 #include "itkPSMTwoCostFunction.h"
 #include "itkCommand.h"
 
+//#include "itkMesh.h"
+//#include "itkCuberilleImageToMeshFilter.h"
+//#include "itkBSplineInterpolateImageFunction.h"
+//#include "itkTriangleMeshToSimplexMeshFilter.h"
+//#include "itkSimplexMeshVolumeCalculator.h"
+//#include "itkDefaultDynamicMeshTraits.h"
+//#include "itkSimplexMeshVolumeCalculator.h"
+
 namespace itk
 {
 
@@ -109,6 +117,27 @@ public:
 
     /** Type of the optimizer */
     typedef PSMGradientDescentOptimizer<typename ImageType::PixelType, Dimension> OptimizerType;
+
+    //    /** Type of isosurface mesh to be use in compute the surface area for global sigma computation */
+    //    typedef itk::Mesh< typename ImageType::PixelType, Dimension > MeshType;
+
+    //    /** Type of interpolator for isosurface extraction */
+    //    typedef itk::BSplineInterpolateImageFunction< ImageType, float, float > InterpolatorType;
+
+    //    /** Type of filter used to extract the isosurfaces */
+    //    typedef itk::CuberilleImageToMeshFilter< ImageType, MeshType, InterpolatorType > CuberilleType;
+
+    //    /** Types for area computation */
+    //    typedef itk::DefaultDynamicMeshTraits<typename ImageType::PixelType, Dimension, Dimension,double,double>  TriangleMeshTraits;
+    //    typedef itk::DefaultDynamicMeshTraits<typename ImageType::PixelType, Dimension, Dimension, double,double> SimplexMeshTraits;
+    //    //typedef itk::Mesh<typename ImageType::PixelType,Dimension, TriangleMeshTraits>                    TriangleMeshType;
+    //    typedef itk::SimplexMesh<typename ImageType::PixelType,Dimension, SimplexMeshTraits>              SimplexMeshType;
+
+    //    // declare the triangle to simplex mesh filter
+    //    typedef itk::TriangleMeshToSimplexMeshFilter<MeshType, SimplexMeshType> SimplexFilterType;
+
+    //    // decalre the simplex mesh volume calculator
+    //    typedef itk::SimplexMeshVolumeCalculator<SimplexMeshType> SimplexVolumeType;
 
     /**
    * Override parent classes to expand input list on new inputs.  This
@@ -286,8 +315,25 @@ public:
     void SetShapeEntropyWeighting(double w)
     {
         m_CostFunction->SetRelativeGradientScaling(w);
+
+        // cost function = A + alpha * B
+        m_CostFunction->SetFunctionA(m_ParticleEntropyFunction);
+        m_CostFunction->SetFunctionB(m_ShapeEntropyFunction);
     }
     double GetShapeEntropyWeighting() const
+    {
+        return m_CostFunction->GetRelativeGradientScaling();
+    }
+
+    void SetParticleEntropyWeighting(double w)
+    {
+        m_CostFunction->SetRelativeGradientScaling(w);
+
+        // cost function = A + alpha * B
+        m_CostFunction->SetFunctionA(m_ShapeEntropyFunction);
+        m_CostFunction->SetFunctionB(m_ParticleEntropyFunction);
+    }
+    double GetParticleEntropyWeighting() const
     {
         return m_CostFunction->GetRelativeGradientScaling();
     }
@@ -536,6 +582,14 @@ public:
     double GetShapeEntropyWeight()
     { return m_ShapeEntropyWeight;}
 
+    /** Set/Get the particle entropy weight
+     */
+    void SetParticleEntropyWeight(double weight)
+    { m_ParticleEntropyWeight = weight; }
+
+    double GetParticleEntropyWeight()
+    { return m_ParticleEntropyWeight;}
+
 protected:
     PSMEntropyModelFilter();
     virtual ~PSMEntropyModelFilter() {};
@@ -676,6 +730,11 @@ private:
 
     /** The shape entropy weight, this weights the correspondence part of the energy function */
     double m_ShapeEntropyWeight;
+
+    /** The shape entropy weight, this weights the sampling part of the energy function
+     *   If this weight is user-supplied, the shape entropy weight will be taken as 1
+    */
+    double m_ParticleEntropyWeight;
 };
 
 } // end namespace itk

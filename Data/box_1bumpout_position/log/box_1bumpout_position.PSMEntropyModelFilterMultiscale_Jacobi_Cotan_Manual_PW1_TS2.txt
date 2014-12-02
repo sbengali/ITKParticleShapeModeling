@@ -1,0 +1,951 @@
+Reading distance transforms ...
+  groom/box_1bumpout_position.00.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.01.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.02.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.03.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.04.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.05.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.06.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.07.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.08.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.09.tpSmoothDT.nrrd
+  groom/box_1bumpout_position.10.tpSmoothDT.nrrd
+Done!
+Found 12 scales. 
+Optimization parameters for scale 0: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 1: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 2: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 3: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 4: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 500
+                 tolerance = 0.01
+        maximum_iterations = 500
+Optimization parameters for scale 5: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 6: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 7: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 8: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 9: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 10: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimization parameters for scale 11: 
+    regularization_initial = 10
+      regularization_final = 1
+  regularization_decayspan = 1000
+                 tolerance = 0.01
+        maximum_iterations = 1000
+Optimizer type: jacobi
+Pairwise potential: cotan
+Inverse method: svd
+Initial regularization mode: manual
+Particle entropy weight: 1, Note: shape entropy weight will be 1.0
+Time step: 2
+GlobalSigma: 120.5
+Scale # 0, Iteration # 50
+	Eigenmode variances: 4224.39 0.00254881 2.51268e-07 1.50102e-13 3.19744e-14 1.24345e-14 5.32907e-15 -2.66454e-14 -5.24025e-14 -1.04805e-13 -2.65565e-13 
+	Regularization = 7.94328
+	Correspondence Energy = 1.88815
+Scale # 0, Iteration # 100
+	Eigenmode variances: 4039.36 0.00553231 2.62586e-07 2.37144e-13 9.76996e-14 1.86517e-14 5.32907e-15 -9.76996e-15 -1.5099e-14 -1.2701e-13 -3.606e-13 
+	Regularization = 6.30957
+	Correspondence Energy = 1.67887
+Scale # 0, Iteration # 150
+	Eigenmode variances: 3875.54 0.0218004 6.7988e-07 2.85105e-13 9.9476e-14 1.59872e-14 -8.88178e-16 -3.01981e-14 -6.12843e-14 -8.88178e-14 -1.62537e-13 
+	Regularization = 5.01187
+	Correspondence Energy = 1.46986
+Scale # 0, Iteration # 200
+	Eigenmode variances: 3754.45 0.048651 2.96928e-06 7.72715e-14 5.77316e-14 3.37508e-14 5.32907e-15 -1.90958e-14 -4.70735e-14 -9.81437e-14 -2.3137e-13 
+	Regularization = 3.98107
+	Correspondence Energy = 1.26124
+Scale # 0, Iteration # 250
+	Eigenmode variances: 3676.7 0.0629349 5.16874e-06 9.76996e-14 1.90958e-14 2.66454e-15 -2.66454e-15 -7.99361e-15 -5.81757e-14 -9.28146e-14 -4.16556e-13 
+	Regularization = 3.16228
+	Correspondence Energy = 1.0526
+Scale # 0, Iteration # 300
+	Eigenmode variances: 3623.46 0.0580292 4.77332e-06 1.75859e-13 5.55112e-14 1.5099e-14 1.77636e-15 -7.54952e-15 -2.93099e-14 -7.68274e-14 -2.4869e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 0.843557
+Scale # 0, Iteration # 350
+	Eigenmode variances: 3565.33 0.0233769 4.50589e-06 3.56604e-13 7.90479e-14 5.19584e-14 3.9968e-15 -8.88178e-15 -1.77636e-14 -5.50671e-14 -1.71418e-13 
+	Regularization = 1.99526
+	Correspondence Energy = 0.633219
+Scale # 0, Iteration # 400
+	Eigenmode variances: 3499.63 0.00561611 5.981e-07 2.11609e-13 1.54099e-13 4.26326e-14 1.57652e-14 9.32587e-15 2.22045e-15 -1.75415e-14 -1.63647e-13 
+	Regularization = 1.58489
+	Correspondence Energy = 0.423158
+Scale # 0, Iteration # 450
+	Eigenmode variances: 3434.55 0.00278372 1.19219e-07 1.21014e-13 7.01661e-14 1.06581e-14 6.88338e-15 -5.55112e-15 -2.35367e-14 -1.03473e-13 -1.38334e-13 
+	Regularization = 1.25893
+	Correspondence Energy = 0.213712
+Scale # 0, Iteration # 500
+	Eigenmode variances: 3368.24 0.00156927 8.20729e-08 1.15685e-13 7.08322e-14 3.17524e-14 9.99201e-15 -2.88658e-15 -2.13163e-14 -8.83738e-14 -2.43583e-13 
+	Regularization = 1
+	Correspondence Energy = 0.00432842
+GlobalSigma: 120.5
+Scale # 1, Iteration # 50
+	Eigenmode variances: 6783.08 1.63395 0.206517 0.00121406 3.03714e-05 7.82185e-06 5.02709e-13 1.06581e-13 -1.77636e-15 -8.52651e-14 -1.20792e-13 
+	Regularization = 7.94328
+	Correspondence Energy = 1.90739
+Scale # 1, Iteration # 100
+	Eigenmode variances: 6969.97 0.636988 0.471466 0.00223411 3.11023e-05 1.6267e-05 1.88294e-13 7.99361e-14 4.9738e-14 -1.42109e-14 -2.5846e-13 
+	Regularization = 6.30957
+	Correspondence Energy = 1.69405
+Scale # 1, Iteration # 150
+	Eigenmode variances: 7230.52 0.461589 0.150383 0.00175587 1.42645e-05 5.12588e-06 3.97016e-13 7.90479e-14 -1.15463e-14 -2.30926e-14 -1.74971e-13 
+	Regularization = 5.01187
+	Correspondence Energy = 1.48015
+Scale # 1, Iteration # 200
+	Eigenmode variances: 7485.91 0.31512 0.0303908 0.000350574 3.89265e-05 2.23731e-06 1.40332e-13 5.50671e-14 -3.37508e-14 -7.14984e-14 -3.20632e-13 
+	Regularization = 3.98107
+	Correspondence Energy = 1.26773
+Scale # 1, Iteration # 250
+	Eigenmode variances: 7692.14 0.234886 0.0119866 0.000143158 2.41579e-05 7.74671e-06 1.15907e-13 2.66454e-14 8.88178e-16 -4.66294e-14 -1.14575e-13 
+	Regularization = 3.16228
+	Correspondence Energy = 1.05765
+Scale # 1, Iteration # 300
+	Eigenmode variances: 7863.16 0.163361 0.00502579 4.4539e-05 2.14771e-05 3.34712e-06 1.64313e-13 6.75016e-14 -3.9968e-15 -9.41469e-14 -2.54907e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 0.847376
+Scale # 1, Iteration # 350
+	Eigenmode variances: 8003.63 0.12445 0.00285198 0.000137353 7.38342e-06 2.26717e-06 2.63345e-13 5.86198e-14 1.59872e-14 -4.9738e-14 -1.16795e-13 
+	Regularization = 1.99526
+	Correspondence Energy = 0.637776
+Scale # 1, Iteration # 400
+	Eigenmode variances: 8101.72 0.0835337 0.000949394 1.55871e-05 2.86797e-06 1.20618e-06 3.3884e-13 1.93179e-14 -1.75415e-14 -5.41789e-14 -2.21156e-13 
+	Regularization = 1.58489
+	Correspondence Energy = 0.427542
+Scale # 1, Iteration # 450
+	Eigenmode variances: 8199.83 0.0519505 0.000334162 1.49152e-05 4.62404e-06 2.43722e-06 1.70086e-13 7.4607e-14 1.77636e-15 -5.10703e-15 -6.55032e-14 
+	Regularization = 1.25893
+	Correspondence Energy = 0.217198
+Scale # 1, Iteration # 500
+	Eigenmode variances: 8286.06 0.042179 0.000384841 1.51223e-05 1.50236e-06 1.13155e-07 6.16618e-13 4.39648e-14 6.21725e-15 -6.86118e-14 -1.76748e-13 
+	Regularization = 1
+	Correspondence Energy = 0.00796174
+GlobalSigma: 120.5
+Scale # 2, Iteration # 50
+	Eigenmode variances: 16505.8 0.0918079 0.00364836 0.00132104 0.000289148 6.74018e-05 2.54715e-05 6.85714e-06 2.19155e-06 1.38225e-07 -3.2685e-13 
+	Regularization = 7.94328
+	Correspondence Energy = 1.88922
+Scale # 2, Iteration # 100
+	Eigenmode variances: 16323.9 0.0913182 0.0179123 0.00365862 0.00110536 0.000381721 7.03186e-05 1.51792e-06 1.3055e-06 2.07145e-07 -5.72875e-13 
+	Regularization = 6.30957
+	Correspondence Energy = 1.68043
+Scale # 2, Iteration # 150
+	Eigenmode variances: 16207.6 0.0307096 0.00399154 0.00104964 0.000294984 3.90385e-05 1.28311e-05 1.81973e-06 6.72172e-07 1.98932e-07 4.51195e-13 
+	Regularization = 5.01187
+	Correspondence Energy = 1.47012
+Scale # 2, Iteration # 200
+	Eigenmode variances: 16117.9 0.0278824 0.00145887 0.000432511 7.72624e-05 1.85891e-05 6.71418e-06 9.34533e-07 1.22563e-07 6.99862e-08 6.33715e-13 
+	Regularization = 3.98107
+	Correspondence Energy = 1.26082
+Scale # 2, Iteration # 250
+	Eigenmode variances: 16014.8 0.0226368 0.00134245 0.000282819 9.03471e-06 4.04376e-06 1.60076e-06 7.40417e-07 1.21061e-07 1.89e-09 -1.76748e-13 
+	Regularization = 3.16228
+	Correspondence Energy = 1.05151
+Scale # 2, Iteration # 300
+	Eigenmode variances: 15878.7 0.0205823 0.00438287 0.000432854 0.000102618 1.85168e-05 6.36651e-06 1.3107e-06 3.39371e-07 1.00946e-07 1.36335e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 0.842407
+Scale # 2, Iteration # 350
+	Eigenmode variances: 15641.3 0.00827316 0.0021189 0.000385433 2.0301e-05 1.11158e-05 4.60245e-06 9.20343e-07 2.93434e-07 1.29143e-07 -7.32747e-14 
+	Regularization = 1.99526
+	Correspondence Energy = 0.632654
+Scale # 2, Iteration # 400
+	Eigenmode variances: 15450 0.0216675 0.0021234 0.000459689 1.86663e-05 1.46875e-06 6.83822e-07 3.87391e-07 1.95022e-07 1.62483e-08 3.22187e-13 
+	Regularization = 1.58489
+	Correspondence Energy = 0.424216
+Scale # 2, Iteration # 450
+	Eigenmode variances: 15201.4 0.0713587 0.00307604 0.000699802 0.000104345 8.62877e-06 7.12698e-07 8.5815e-08 6.69865e-08 1.12356e-08 -3.22853e-13 
+	Regularization = 1.25893
+	Correspondence Energy = 0.218782
+Scale # 2, Iteration # 500
+	Eigenmode variances: 14889.6 0.103164 0.00632019 0.00032391 0.000130115 2.90323e-05 4.46706e-06 4.29224e-07 1.14564e-07 8.94164e-09 3.49054e-13 
+	Regularization = 1
+	Correspondence Energy = 0.0136874
+GlobalSigma: 137.494
+GlobalSigma: 139.531
+Scale # 3, Iteration # 50
+	Eigenmode variances: 29574 0.628397 0.0187725 0.00384709 0.00182606 0.00142939 0.000805781 0.000147438 1.2225e-05 1.42495e-06 3.52607e-13 
+	Regularization = 7.94328
+	Correspondence Energy = 1.89532
+GlobalSigma: 141.559
+GlobalSigma: 143.605
+Scale # 3, Iteration # 100
+	Eigenmode variances: 29405.5 0.425406 0.01671 0.00433398 0.00114417 0.000746267 0.000362106 0.000174692 4.86363e-05 1.89253e-06 -4.53859e-13 
+	Regularization = 6.30957
+	Correspondence Energy = 1.68504
+GlobalSigma: 145.655
+Scale # 3, Iteration # 150
+	Eigenmode variances: 29252.9 0.319745 0.00816993 0.00426473 0.0014462 0.00105081 0.000468346 7.40541e-05 5.09652e-05 2.50331e-05 7.52287e-13 
+	Regularization = 5.01187
+	Correspondence Energy = 1.47535
+GlobalSigma: 147.66
+Scale # 3, Iteration # 200
+	Eigenmode variances: 29112.5 0.200123 0.00388001 0.0026638 0.00126235 0.000766631 0.000429644 0.000188803 2.26726e-05 2.71366e-06 3.57492e-13 
+	Regularization = 3.98107
+	Correspondence Energy = 1.26479
+GlobalSigma: 149.666
+GlobalSigma: 151.716
+Scale # 3, Iteration # 250
+	Eigenmode variances: 28983.8 0.144734 0.00376899 0.00138531 0.000934878 0.000445188 9.66546e-05 3.78697e-05 2.17963e-05 6.22748e-06 4.63185e-13 
+	Regularization = 3.16228
+	Correspondence Energy = 1.05506
+GlobalSigma: 153.746
+Scale # 3, Iteration # 300
+	Eigenmode variances: 28860 0.0842478 0.00474906 0.00118312 0.000775836 0.000658123 0.000334295 2.34145e-05 3.00773e-06 1.26687e-06 4.89386e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 0.844754
+GlobalSigma: 155.772
+GlobalSigma: 157.797
+Scale # 3, Iteration # 350
+	Eigenmode variances: 28709.5 0.0700642 0.0072209 0.00258741 0.00081849 0.000573332 5.04206e-05 2.64079e-05 1.90435e-06 1.20331e-06 1.82077e-14 
+	Regularization = 1.99526
+	Correspondence Energy = 0.635799
+GlobalSigma: 159.815
+Scale # 3, Iteration # 400
+	Eigenmode variances: 28514.8 0.0603496 0.0102679 0.00177949 0.000507087 0.000420737 0.000117763 1.1299e-05 1.27784e-06 6.3225e-07 7.2431e-13 
+	Regularization = 1.58489
+	Correspondence Energy = 0.426967
+GlobalSigma: 161.859
+GlobalSigma: 163.902
+Scale # 3, Iteration # 450
+	Eigenmode variances: 28292.1 0.0531638 0.00916514 0.00104654 0.000681433 0.000357327 8.6992e-05 3.89217e-06 1.61469e-06 9.05001e-07 -7.75824e-13 
+	Regularization = 1.25893
+	Correspondence Energy = 0.218069
+GlobalSigma: 165.923
+Scale # 3, Iteration # 500
+	Eigenmode variances: 28051.5 0.0456407 0.00617925 0.000896402 0.000444152 0.000339713 6.24423e-05 9.88474e-06 3.58569e-06 3.81774e-07 -6.01297e-13 
+	Regularization = 1
+	Correspondence Energy = 0.0089419
+GlobalSigma: 96.5297
+GlobalSigma: 97.5863
+GlobalSigma: 98.66
+GlobalSigma: 99.7017
+Scale # 4, Iteration # 50
+	Eigenmode variances: 56195.2 0.237066 0.0484869 0.0133828 0.00562686 0.00454116 0.00181522 0.00115948 0.000501691 0.000147407 -4.06786e-13 
+	Regularization = 7.94328
+	Correspondence Energy = 1.89164
+GlobalSigma: 101.746
+GlobalSigma: 103.757
+Scale # 4, Iteration # 100
+	Eigenmode variances: 56203.6 0.249956 0.0656513 0.0150638 0.00411907 0.00255891 0.00144771 0.000596249 0.000223597 0.000101533 -3.73923e-13 
+	Regularization = 6.30957
+	Correspondence Energy = 1.68359
+GlobalSigma: 105.801
+Scale # 4, Iteration # 150
+	Eigenmode variances: 56066.2 0.34553 0.131904 0.0362255 0.0130901 0.00355185 0.00180423 0.000936527 0.000322839 0.000215648 -2.83595e-12 
+	Regularization = 5.01187
+	Correspondence Energy = 1.47886
+GlobalSigma: 107.855
+GlobalSigma: 109.882
+Scale # 4, Iteration # 200
+	Eigenmode variances: 55796.8 0.348727 0.150362 0.0426322 0.0215582 0.00408172 0.00191586 0.000876331 0.000607171 0.000187932 -9.29035e-13 
+	Regularization = 3.98107
+	Correspondence Energy = 1.27272
+GlobalSigma: 111.909
+GlobalSigma: 113.966
+Scale # 4, Iteration # 250
+	Eigenmode variances: 55387.8 0.275732 0.196084 0.0460306 0.0240606 0.00295581 0.0021682 0.00160479 0.000555846 4.98033e-05 2.99849e-12 
+	Regularization = 3.16228
+	Correspondence Energy = 1.06603
+GlobalSigma: 115.999
+Scale # 4, Iteration # 300
+	Eigenmode variances: 54849 0.297875 0.159884 0.0462406 0.0263743 0.00417752 0.00216262 0.00144806 0.000501379 0.00018483 -9.03277e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 0.86012
+GlobalSigma: 118.018
+GlobalSigma: 120.045
+Scale # 4, Iteration # 350
+	Eigenmode variances: 54221.7 0.25659 0.121648 0.0364261 0.013323 0.0031238 0.00271125 0.000868305 0.000581106 0.000109514 3.61133e-12 
+	Regularization = 1.99526
+	Correspondence Energy = 0.651045
+GlobalSigma: 122.07
+Scale # 4, Iteration # 400
+	Eigenmode variances: 53512.1 0.213686 0.0798699 0.0303464 0.00908123 0.00217826 0.00166052 0.000931687 0.000483752 6.1065e-05 7.24087e-13 
+	Regularization = 1.58489
+	Correspondence Energy = 0.441273
+GlobalSigma: 124.08
+GlobalSigma: 126.14
+Scale # 4, Iteration # 450
+	Eigenmode variances: 52744.9 0.151226 0.0585724 0.0240864 0.00473069 0.00152581 0.00105087 0.000586523 0.000132919 4.92184e-05 6.40155e-13 
+	Regularization = 1.25893
+	Correspondence Energy = 0.230191
+GlobalSigma: 128.172
+Scale # 4, Iteration # 500
+	Eigenmode variances: 51986.6 0.102828 0.0436542 0.0163287 0.00353016 0.00127598 0.000926306 0.000556736 8.60499e-05 2.6331e-05 8.02913e-13 
+	Regularization = 1
+	Correspondence Energy = 0.0189568
+GlobalSigma: 82.3577
+GlobalSigma: 83.4281
+GlobalSigma: 84.4305
+GlobalSigma: 85.4812
+Scale # 5, Iteration # 50
+	Eigenmode variances: 103656 1.9935 1.29488 0.188621 0.0581623 0.0134333 0.00931854 0.00418828 0.00271723 0.000934878 -3.32534e-12 
+	Regularization = 8.91251
+	Correspondence Energy = 2.02411
+GlobalSigma: 86.4842
+GlobalSigma: 87.5202
+GlobalSigma: 88.5269
+Scale # 5, Iteration # 100
+	Eigenmode variances: 102566 2.09211 1.00025 0.196707 0.0258853 0.0160809 0.00892937 0.00739698 0.0010489 0.000654181 -4.96048e-12 
+	Regularization = 7.94328
+	Correspondence Energy = 1.9209
+GlobalSigma: 89.5397
+GlobalSigma: 90.5515
+GlobalSigma: 91.5989
+Scale # 5, Iteration # 150
+	Eigenmode variances: 101165 2.27043 1.14473 0.147833 0.0255145 0.0173387 0.00916352 0.00500471 0.000907348 0.000397611 -5.52181e-12 
+	Regularization = 7.07946
+	Correspondence Energy = 1.82282
+GlobalSigma: 92.6154
+GlobalSigma: 93.6606
+GlobalSigma: 94.6688
+Scale # 5, Iteration # 200
+	Eigenmode variances: 99574.7 2.585 1.28528 0.154538 0.0336866 0.0180499 0.00820257 0.00209668 0.00156401 0.000601873 2.77289e-12 
+	Regularization = 6.30957
+	Correspondence Energy = 1.72779
+GlobalSigma: 95.6986
+GlobalSigma: 96.7456
+GlobalSigma: 97.8113
+Scale # 5, Iteration # 250
+	Eigenmode variances: 97723.8 3.01047 1.41469 0.207904 0.0352445 0.0142779 0.00617836 0.00241308 0.00102843 0.000237618 1.30651e-12 
+	Regularization = 5.62341
+	Correspondence Energy = 1.63555
+GlobalSigma: 98.831
+GlobalSigma: 99.8716
+Scale # 5, Iteration # 300
+	Eigenmode variances: 95606.6 3.349 1.50141 0.261969 0.0533952 0.01431 0.00900141 0.00379371 0.00133545 0.000329697 -3.26317e-12 
+	Regularization = 5.01187
+	Correspondence Energy = 1.54369
+GlobalSigma: 101.892
+GlobalSigma: 103.965
+Scale # 5, Iteration # 350
+	Eigenmode variances: 93158.6 4.70318 1.47153 0.339586 0.202809 0.0575728 0.00896966 0.00440012 0.00296686 0.000797095 1.2701e-13 
+	Regularization = 4.46684
+	Correspondence Energy = 1.46601
+GlobalSigma: 106.027
+GlobalSigma: 108.058
+Scale # 5, Iteration # 400
+	Eigenmode variances: 90506.4 12.069 1.45897 0.654992 0.247474 0.112824 0.0122799 0.00926548 0.00399534 0.00178346 6.83098e-12 
+	Regularization = 3.98107
+	Correspondence Energy = 1.43541
+GlobalSigma: 110.096
+GlobalSigma: 112.117
+Scale # 5, Iteration # 450
+	Eigenmode variances: 88689.3 49.9618 1.89366 0.498673 0.217123 0.0735601 0.0463548 0.0148251 0.00755044 0.00243893 -1.38867e-12 
+	Regularization = 3.54813
+	Correspondence Energy = 1.45966
+GlobalSigma: 114.161
+Scale # 5, Iteration # 500
+	Eigenmode variances: 87154.1 66.905 2.4952 0.572057 0.212754 0.12499 0.0295376 0.0132724 0.00687554 0.00191261 -3.93863e-12 
+	Regularization = 3.16228
+	Correspondence Energy = 1.40894
+GlobalSigma: 116.214
+GlobalSigma: 118.221
+Scale # 5, Iteration # 550
+	Eigenmode variances: 85475.7 73.5891 2.49247 0.453141 0.174985 0.0597585 0.0321499 0.0116138 0.00701909 0.00234781 1.10001e-12 
+	Regularization = 2.81838
+	Correspondence Energy = 1.32395
+GlobalSigma: 120.252
+GlobalSigma: 122.296
+Scale # 5, Iteration # 600
+	Eigenmode variances: 84173 135.133 4.18855 0.659753 0.234016 0.112454 0.0468146 0.0187791 0.0149604 0.00500925 -8.30003e-13 
+	Regularization = 2.51189
+	Correspondence Energy = 1.3285
+GlobalSigma: 124.299
+GlobalSigma: 126.301
+Scale # 5, Iteration # 650
+	Eigenmode variances: 82545.4 174.702 7.79406 1.48773 0.718275 0.190972 0.113697 0.0755995 0.0355499 0.00541197 9.47242e-13 
+	Regularization = 2.23872
+	Correspondence Energy = 1.35605
+GlobalSigma: 128.348
+Scale # 5, Iteration # 700
+	Eigenmode variances: 80587.8 239.222 4.78448 1.74788 0.686142 0.253159 0.11486 0.0321391 0.01829 0.0125035 -1.70552e-12 
+	Regularization = 1.99526
+	Correspondence Energy = 1.27948
+GlobalSigma: 130.4
+Scale # 5, Iteration # 750
+	Eigenmode variances: 78968 331.847 5.66147 0.780488 0.650307 0.271724 0.138032 0.0702829 0.0285306 0.0129998 -3.90776e-12 
+	Regularization = 1.77828
+	Correspondence Energy = 1.21759
+GlobalSigma: 132.424
+Scale # 5, Iteration # 800
+	Eigenmode variances: 76898.2 349.689 5.26797 0.770358 0.286663 0.195115 0.150058 0.0888572 0.0321367 0.0164534 2.76024e-12 
+	Regularization = 1.58489
+	Correspondence Energy = 1.12195
+GlobalSigma: 134.449
+Scale # 5, Iteration # 850
+	Eigenmode variances: 74747.8 383.91 1.39917 0.629542 0.482617 0.223902 0.0795087 0.0572006 0.011553 0.00972417 -8.53095e-13 
+	Regularization = 1.41254
+	Correspondence Energy = 0.971618
+GlobalSigma: 136.469
+Scale # 5, Iteration # 900
+	Eigenmode variances: 73114 531.403 0.889153 0.50693 0.248603 0.118397 0.0814417 0.0338331 0.0217198 0.00683692 -1.26743e-12 
+	Regularization = 1.25893
+	Correspondence Energy = 0.87482
+GlobalSigma: 138.469
+Scale # 5, Iteration # 950
+	Eigenmode variances: 71697.7 731.709 0.658351 0.26395 0.181387 0.0909308 0.0484678 0.0167163 0.0141871 0.00385832 -1.86273e-12 
+	Regularization = 1.12202
+	Correspondence Energy = 0.784152
+GlobalSigma: 140.473
+Scale # 5, Iteration # 1000
+	Eigenmode variances: 70305.3 862.279 0.96115 0.495082 0.225021 0.16517 0.097122 0.0426368 0.015192 0.00667433 8.64864e-13 
+	Regularization = 1
+	Correspondence Energy = 0.760563
+GlobalSigma: 97.8357
+GlobalSigma: 98.888
+GlobalSigma: 99.9088
+Scale # 6, Iteration # 50
+	Eigenmode variances: 139975 1559.92 2.50651 1.82758 0.520399 0.212189 0.0833661 0.0423019 0.0199808 0.00530193 -4.82991e-12 
+	Regularization = 8.91251
+	Correspondence Energy = 2.50876
+Scale # 6, Iteration # 100
+	Eigenmode variances: 138983 1442.34 2.84567 1.94586 0.553959 0.1662 0.0567202 0.0333245 0.019879 0.00642107 1.38867e-11 
+	Regularization = 7.94328
+	Correspondence Energy = 2.41618
+GlobalSigma: 101.916
+Scale # 6, Iteration # 150
+	Eigenmode variances: 137818 1363.68 2.81828 1.78785 0.495837 0.128456 0.0449458 0.0338084 0.0137662 0.00817633 7.37721e-12 
+	Regularization = 7.07946
+	Correspondence Energy = 2.31977
+Scale # 6, Iteration # 200
+	Eigenmode variances: 136472 1302.01 3.00609 1.77365 0.520489 0.178211 0.0543086 0.0369352 0.0196943 0.00400855 -1.04095e-12 
+	Regularization = 6.30957
+	Correspondence Energy = 2.23063
+Scale # 6, Iteration # 250
+	Eigenmode variances: 134977 1257.23 3.057 1.91741 0.534446 0.166461 0.0591884 0.0421775 0.0179419 0.00427852 2.02505e-13 
+	Regularization = 5.62341
+	Correspondence Energy = 2.14291
+GlobalSigma: 103.92
+Scale # 6, Iteration # 300
+	Eigenmode variances: 133271 1282.49 2.82075 2.03856 0.490977 0.161037 0.0657985 0.0432349 0.019789 0.00806046 -2.3741e-12 
+	Regularization = 5.01187
+	Correspondence Energy = 2.05688
+Scale # 6, Iteration # 350
+	Eigenmode variances: 131727 1351.51 2.58502 1.84004 0.462211 0.15605 0.0703837 0.0414486 0.0175009 0.00692803 -1.15019e-12 
+	Regularization = 4.46684
+	Correspondence Energy = 1.96963
+GlobalSigma: 105.934
+Scale # 6, Iteration # 400
+	Eigenmode variances: 130158 1440.2 2.45015 1.66064 0.457852 0.164267 0.0775045 0.0381233 0.0201346 0.00745862 -1.42109e-12 
+	Regularization = 3.98107
+	Correspondence Energy = 1.88557
+Scale # 6, Iteration # 450
+	Eigenmode variances: 128579 1541.42 2.2822 1.49226 0.471946 0.169246 0.0795831 0.0340084 0.0187222 0.00585566 -1.95888e-12 
+	Regularization = 3.54813
+	Correspondence Energy = 1.80155
+Scale # 6, Iteration # 500
+	Eigenmode variances: 127035 1662.22 2.25861 1.34887 0.476564 0.172694 0.0832541 0.0274317 0.0172725 0.00821387 4.34408e-12 
+	Regularization = 3.16228
+	Correspondence Energy = 1.72077
+GlobalSigma: 107.944
+Scale # 6, Iteration # 550
+	Eigenmode variances: 125598 1802.01 2.22028 1.15198 0.476553 0.189162 0.0883324 0.0288659 0.018163 0.00633028 9.7593e-12 
+	Regularization = 2.81838
+	Correspondence Energy = 1.6397
+Scale # 6, Iteration # 600
+	Eigenmode variances: 124299 1963.19 2.04774 1.0189 0.463883 0.181873 0.0804938 0.0277467 0.0177596 0.00633019 -1.23643e-11 
+	Regularization = 2.51189
+	Correspondence Energy = 1.55632
+Scale # 6, Iteration # 650
+	Eigenmode variances: 123125 2153.56 1.85035 1.1401 0.448685 0.171866 0.0701838 0.0251128 0.0190354 0.00821093 8.24052e-12 
+	Regularization = 2.23872
+	Correspondence Energy = 1.47928
+GlobalSigma: 109.949
+Scale # 6, Iteration # 700
+	Eigenmode variances: 121983 2369.31 1.81825 1.05976 0.446424 0.160345 0.063989 0.0209269 0.0118374 0.00706268 9.88232e-12 
+	Regularization = 1.99526
+	Correspondence Energy = 1.40098
+Scale # 6, Iteration # 750
+	Eigenmode variances: 120797 2591.12 1.86243 0.873269 0.470176 0.158372 0.0584167 0.0273063 0.0114468 0.0055074 3.63198e-12 
+	Regularization = 1.77828
+	Correspondence Energy = 1.32294
+Scale # 6, Iteration # 800
+	Eigenmode variances: 119598 2805.43 1.69213 0.732607 0.502949 0.150234 0.0583389 0.0322799 0.0131561 0.0059794 5.03242e-12 
+	Regularization = 1.58489
+	Correspondence Energy = 1.2403
+GlobalSigma: 111.949
+Scale # 6, Iteration # 850
+	Eigenmode variances: 118426 3006.32 1.44485 0.673687 0.491864 0.130522 0.052041 0.0329735 0.0111423 0.00766939 -6.84786e-13 
+	Regularization = 1.41254
+	Correspondence Energy = 1.15359
+Scale # 6, Iteration # 900
+	Eigenmode variances: 117318 3187.01 1.22353 0.678469 0.442871 0.114014 0.0598205 0.0321078 0.010977 0.00598085 -1.32043e-11 
+	Regularization = 1.25893
+	Correspondence Energy = 1.06733
+Scale # 6, Iteration # 950
+	Eigenmode variances: 116243 3368.45 1.10984 0.644032 0.373332 0.0929913 0.0713815 0.0292342 0.0111773 0.00605554 2.92211e-13 
+	Regularization = 1.12202
+	Correspondence Energy = 0.980667
+GlobalSigma: 113.952
+Scale # 6, Iteration # 1000
+	Eigenmode variances: 115192 3554.33 1.04264 0.551972 0.319967 0.0824111 0.0679624 0.0250755 0.00975976 0.00500761 9.73666e-13 
+	Regularization = 1
+	Correspondence Energy = 0.891796
+GlobalSigma: 78.3541
+GlobalSigma: 79.3659
+GlobalSigma: 80.373
+Scale # 7, Iteration # 50
+	Eigenmode variances: 229295 7087.33 18.2675 4.37581 1.77482 0.641199 0.326361 0.129463 0.0774155 0.0545057 8.65086e-13 
+	Regularization = 8.91251
+	Correspondence Energy = 2.76389
+Scale # 7, Iteration # 100
+	Eigenmode variances: 227865 7136.22 29.9056 6.34265 2.02531 0.936493 0.366461 0.165908 0.0823289 0.0439384 7.69695e-12 
+	Regularization = 7.94328
+	Correspondence Energy = 2.73731
+GlobalSigma: 81.3793
+Scale # 7, Iteration # 150
+	Eigenmode variances: 226667 7331.55 57.9959 9.9118 2.2633 1.32069 0.341825 0.179632 0.0699421 0.0505529 5.26068e-12 
+	Regularization = 7.07946
+	Correspondence Energy = 2.74212
+Scale # 7, Iteration # 200
+	Eigenmode variances: 225862 7672.03 120.888 16.5564 2.50053 1.43625 0.315376 0.149725 0.0793746 0.0567722 -7.98916e-12 
+	Regularization = 6.30957
+	Correspondence Energy = 2.76947
+GlobalSigma: 82.3846
+Scale # 7, Iteration # 250
+	Eigenmode variances: 225065 8161.88 244.233 25.2749 2.45653 1.15403 0.273575 0.142038 0.0870156 0.0610806 9.23794e-12 
+	Regularization = 5.62341
+	Correspondence Energy = 2.79192
+Scale # 7, Iteration # 300
+	Eigenmode variances: 224059 8943.34 472.011 40.3316 2.95655 1.11231 0.731506 0.185783 0.124817 0.0615915 9.80993e-12 
+	Regularization = 5.01187
+	Correspondence Energy = 2.84109
+GlobalSigma: 83.3873
+Scale # 7, Iteration # 350
+	Eigenmode variances: 222820 9580.65 798.85 64.9021 1.80281 1.05389 0.466849 0.176748 0.10263 0.0848575 1.332e-11 
+	Regularization = 4.46684
+	Correspondence Energy = 2.84712
+Scale # 7, Iteration # 400
+	Eigenmode variances: 221450 10129.7 1105.37 101.003 1.67277 0.951107 0.419567 0.198128 0.096153 0.0926151 -3.4964e-11 
+	Regularization = 3.98107
+	Correspondence Energy = 2.84865
+Scale # 7, Iteration # 450
+	Eigenmode variances: 219915 10823.9 1421.18 146.689 1.35331 1.06301 0.562721 0.188366 0.118031 0.104752 1.17422e-11 
+	Regularization = 3.54813
+	Correspondence Energy = 2.84446
+GlobalSigma: 84.3916
+Scale # 7, Iteration # 500
+	Eigenmode variances: 218305 11163.6 1552.99 177.36 1.16483 1.03281 0.543192 0.183114 0.118683 0.101037 -3.41549e-12 
+	Regularization = 3.16228
+	Correspondence Energy = 2.80175
+Scale # 7, Iteration # 550
+	Eigenmode variances: 216558 11379.3 1628.11 198.845 1.10089 0.942844 0.497719 0.165811 0.11552 0.0950318 3.24212e-11 
+	Regularization = 2.81838
+	Correspondence Energy = 2.74747
+Scale # 7, Iteration # 600
+	Eigenmode variances: 214778 11504.3 1693.49 217.66 1.02677 0.812505 0.439513 0.157056 0.114385 0.0857598 1.80398e-11 
+	Regularization = 2.51189
+	Correspondence Energy = 2.68778
+Scale # 7, Iteration # 650
+	Eigenmode variances: 213032 11577.7 1749.7 235.843 0.950148 0.683646 0.396412 0.158269 0.111909 0.0810143 -3.614e-12 
+	Regularization = 2.23872
+	Correspondence Energy = 2.62633
+Scale # 7, Iteration # 700
+	Eigenmode variances: 211309 11610.1 1792.46 253.6 0.855878 0.553465 0.358087 0.162712 0.0951638 0.0710816 -5.79492e-12 
+	Regularization = 1.99526
+	Correspondence Energy = 2.56112
+Scale # 7, Iteration # 750
+	Eigenmode variances: 209628 11609.5 1823.49 271.008 0.742843 0.463745 0.323167 0.162923 0.0809949 0.061719 1.50839e-11 
+	Regularization = 1.77828
+	Correspondence Energy = 2.49416
+GlobalSigma: 85.3932
+Scale # 7, Iteration # 800
+	Eigenmode variances: 208017 11569.1 1841.24 282.648 0.629151 0.382211 0.300493 0.15265 0.0672512 0.0494753 -7.29417e-12 
+	Regularization = 1.58489
+	Correspondence Energy = 2.42284
+Scale # 7, Iteration # 850
+	Eigenmode variances: 206469 11502.4 1856.36 294.585 0.532071 0.327132 0.279741 0.134885 0.054538 0.0400682 2.91012e-12 
+	Regularization = 1.41254
+	Correspondence Energy = 2.35143
+Scale # 7, Iteration # 900
+	Eigenmode variances: 204966 11419.8 1869.9 306.964 0.460874 0.285527 0.268771 0.122195 0.045503 0.0357704 -1.69107e-11 
+	Regularization = 1.25893
+	Correspondence Energy = 2.28187
+Scale # 7, Iteration # 950
+	Eigenmode variances: 203484 11325.7 1883.24 319.337 0.406692 0.266646 0.246317 0.111524 0.03949 0.0344442 1.09588e-11 
+	Regularization = 1.12202
+	Correspondence Energy = 2.21335
+Scale # 7, Iteration # 1000
+	Eigenmode variances: 202004 11219.9 1897.96 331.381 0.360007 0.264602 0.220008 0.10256 0.0422331 0.0323709 -1.07394e-11 
+	Regularization = 1
+	Correspondence Energy = 2.1461
+GlobalSigma: 61.1634
+Scale # 8, Iteration # 50
+	Eigenmode variances: 401854 22807.7 4044.51 789.104 10.3608 3.98478 1.93056 1.08511 0.562744 0.348645 4.67342e-11 
+	Regularization = 8.91251
+	Correspondence Energy = 3.80924
+Scale # 8, Iteration # 100
+	Eigenmode variances: 399191 23299.6 4390.93 1078.66 23.8071 6.65128 2.49903 1.56151 0.719322 0.448406 -9.70068e-12 
+	Regularization = 7.94328
+	Correspondence Energy = 3.86758
+Scale # 8, Iteration # 150
+	Eigenmode variances: 397005 23580.3 4699.68 1417.93 40.0126 8.22657 2.80784 1.73827 0.640384 0.496591 1.33005e-11 
+	Regularization = 7.07946
+	Correspondence Energy = 3.89755
+Scale # 8, Iteration # 200
+	Eigenmode variances: 395162 23682.1 4951.85 1711.37 54.5496 8.20421 2.63046 1.73629 0.554132 0.472018 -3.47642e-11 
+	Regularization = 6.30957
+	Correspondence Energy = 3.8894
+Scale # 8, Iteration # 250
+	Eigenmode variances: 393344 23673.1 5151.18 1931.19 63.3422 7.3406 2.25547 1.58086 0.528661 0.390117 4.01457e-12 
+	Regularization = 5.62341
+	Correspondence Energy = 3.85207
+Scale # 8, Iteration # 300
+	Eigenmode variances: 391539 23585.5 5305.7 2094.2 66.3467 6.20374 1.95697 1.35523 0.50315 0.330213 4.06413e-11 
+	Regularization = 5.01187
+	Correspondence Energy = 3.7981
+Scale # 8, Iteration # 350
+	Eigenmode variances: 389678 23456.3 5422.81 2217.98 64.6896 5.18476 1.77472 1.17239 0.458664 0.28777 -1.17701e-11 
+	Regularization = 4.46684
+	Correspondence Energy = 3.73587
+Scale # 8, Iteration # 400
+	Eigenmode variances: 387765 23305.2 5502.96 2313.9 59.6684 4.36732 1.63225 1.02176 0.432272 0.260772 3.54978e-11 
+	Regularization = 3.98107
+	Correspondence Energy = 3.66835
+Scale # 8, Iteration # 450
+	Eigenmode variances: 385880 23133.3 5549.34 2385.18 52.5494 3.68826 1.50093 0.894462 0.397133 0.245532 2.44129e-11 
+	Regularization = 3.54813
+	Correspondence Energy = 3.59545
+Scale # 8, Iteration # 500
+	Eigenmode variances: 383998 22949.9 5568.03 2435.43 44.8254 3.14929 1.37063 0.784029 0.34962 0.226872 9.00142e-11 
+	Regularization = 3.16228
+	Correspondence Energy = 3.51841
+Scale # 8, Iteration # 550
+	Eigenmode variances: 382099 22757.9 5567.26 2468.22 37.0362 2.746 1.21619 0.684362 0.306732 0.204352 -8.65414e-11 
+	Regularization = 2.81838
+	Correspondence Energy = 3.43759
+Scale # 8, Iteration # 600
+	Eigenmode variances: 380193 22556.9 5553.36 2486.56 29.6295 2.39734 1.07258 0.592487 0.270703 0.187141 -5.14957e-11 
+	Regularization = 2.51189
+	Correspondence Energy = 3.35323
+Scale # 8, Iteration # 650
+	Eigenmode variances: 378267 22344.9 5530.41 2494.83 22.962 2.0934 0.961301 0.51336 0.242024 0.177313 -9.40088e-11 
+	Regularization = 2.23872
+	Correspondence Energy = 3.26656
+Scale # 8, Iteration # 700
+	Eigenmode variances: 376311 22122.9 5499.1 2496.33 17.3349 1.80711 0.863992 0.450883 0.22193 0.153463 1.31808e-11 
+	Regularization = 1.99526
+	Correspondence Energy = 3.17693
+Scale # 8, Iteration # 750
+	Eigenmode variances: 374376 21899.7 5460.79 2494.21 13.4763 1.54831 0.775431 0.399062 0.19643 0.131617 -4.19009e-11 
+	Regularization = 1.77828
+	Correspondence Energy = 3.08905
+Scale # 8, Iteration # 800
+	Eigenmode variances: 372450 21682.3 5418.04 2494.41 10.7252 1.32125 0.698655 0.358353 0.176351 0.112075 1.63782e-11 
+	Regularization = 1.58489
+	Correspondence Energy = 3.00353
+Scale # 8, Iteration # 850
+	Eigenmode variances: 370526 21469.8 5368.83 2496.42 8.4177 1.11991 0.62116 0.328009 0.158122 0.098333 1.18416e-11 
+	Regularization = 1.41254
+	Correspondence Energy = 2.91692
+Scale # 8, Iteration # 900
+	Eigenmode variances: 368631 21260.1 5317.08 2501.24 6.71418 0.971589 0.562254 0.314136 0.145564 0.0929929 -7.4168e-11 
+	Regularization = 1.25893
+	Correspondence Energy = 2.83477
+Scale # 8, Iteration # 950
+	Eigenmode variances: 366765 21051 5260.69 2507.41 5.43631 0.849542 0.50894 0.299945 0.129091 0.0866844 1.96445e-11 
+	Regularization = 1.12202
+	Correspondence Energy = 2.75378
+Scale # 8, Iteration # 1000
+	Eigenmode variances: 364895 20846.7 5201.15 2512.91 4.52441 0.743002 0.46398 0.281663 0.117376 0.082652 -1.34397e-11 
+	Regularization = 1
+	Correspondence Energy = 2.67523
+GlobalSigma: 45.0964
+Scale # 9, Iteration # 50
+	Eigenmode variances: 727218 42203 10677.7 5481.9 95.1907 27.226 14.2103 6.21492 2.48124 1.82503 -9.68114e-12 
+	Regularization = 8.91251
+	Correspondence Energy = 4.51195
+Scale # 9, Iteration # 100
+	Eigenmode variances: 724498 42844.3 11099.8 6071.87 307.848 95.3189 40.4091 7.75911 2.95702 1.8226 -4.42606e-11 
+	Regularization = 7.94328
+	Correspondence Energy = 4.76963
+Scale # 9, Iteration # 150
+	Eigenmode variances: 721990 43244.4 11394.3 6454.9 524.358 189.398 78.8381 6.20712 2.53566 1.45212 -3.41274e-11 
+	Regularization = 7.07946
+	Correspondence Energy = 4.88709
+Scale # 9, Iteration # 200
+	Eigenmode variances: 719400 43456.6 11541.3 6679.43 702.374 277.1 117.931 4.93633 2.04612 1.201 -4.00124e-11 
+	Regularization = 6.30957
+	Correspondence Energy = 4.93481
+Scale # 9, Iteration # 250
+	Eigenmode variances: 716793 43584.9 11618.3 6833.22 841.682 350.414 152.741 4.21067 1.62479 1.03403 -1.62128e-11 
+	Regularization = 5.62341
+	Correspondence Energy = 4.95023
+Scale # 9, Iteration # 300
+	Eigenmode variances: 714216 43682.6 11668.1 6952.71 952.275 411.528 184.601 3.71043 1.31002 0.89827 -1.03535e-10 
+	Regularization = 5.01187
+	Correspondence Energy = 4.94949
+Scale # 9, Iteration # 350
+	Eigenmode variances: 711673 43771.7 11708.8 7049.61 1042.72 461.637 211.882 3.30968 1.09268 0.775483 -1.36752e-10 
+	Regularization = 4.46684
+	Correspondence Energy = 4.93813
+Scale # 9, Iteration # 400
+	Eigenmode variances: 709157 43866.3 11744.3 7127.89 1118.59 501.775 232.557 2.93345 0.947077 0.672768 9.77987e-11 
+	Regularization = 3.98107
+	Correspondence Energy = 4.91852
+Scale # 9, Iteration # 450
+	Eigenmode variances: 706692 43972.1 11775.6 7188.96 1182.72 534.171 248.054 2.58717 0.822848 0.581718 -1.11203e-10 
+	Regularization = 3.54813
+	Correspondence Energy = 4.89284
+Scale # 9, Iteration # 500
+	Eigenmode variances: 704317 44085.8 11798.3 7235.37 1237.15 560.125 260.018 2.27653 0.70629 0.518161 9.13314e-11 
+	Regularization = 3.16228
+	Correspondence Energy = 4.8632
+Scale # 9, Iteration # 550
+	Eigenmode variances: 702022 44199.6 11810.8 7271.11 1283.01 579.673 268.565 1.98741 0.630619 0.472023 -1.42828e-10 
+	Regularization = 2.81838
+	Correspondence Energy = 4.83075
+Scale # 9, Iteration # 600
+	Eigenmode variances: 699811 44309.5 11815.3 7297.98 1321.82 594.175 274.782 1.72707 0.573609 0.432269 1.4501e-10 
+	Regularization = 2.51189
+	Correspondence Energy = 4.79606
+Scale # 9, Iteration # 650
+	Eigenmode variances: 697677 44413.1 11812 7317.41 1354.13 604.054 279.413 1.50205 0.527919 0.398773 1.33218e-10 
+	Regularization = 2.23872
+	Correspondence Energy = 4.75977
+Scale # 9, Iteration # 700
+	Eigenmode variances: 695612 44512.3 11801 7330.18 1381.05 610.466 283.305 1.3072 0.483135 0.370441 -5.09557e-11 
+	Regularization = 1.99526
+	Correspondence Energy = 4.72222
+Scale # 9, Iteration # 750
+	Eigenmode variances: 693596 44606.7 11782.7 7337.18 1403.44 614.304 287.265 1.14185 0.432763 0.352146 -3.45017e-11 
+	Regularization = 1.77828
+	Correspondence Energy = 4.68397
+Scale # 9, Iteration # 800
+	Eigenmode variances: 691590 44697.8 11757.2 7339.76 1422.4 616.406 290.878 0.995665 0.380135 0.335914 1.81788e-11 
+	Regularization = 1.58489
+	Correspondence Energy = 4.64469
+Scale # 9, Iteration # 850
+	Eigenmode variances: 689595 44782 11726.9 7339.77 1438.47 616.426 292.277 0.866824 0.343095 0.318567 -1.16529e-10 
+	Regularization = 1.41254
+	Correspondence Energy = 4.60455
+Scale # 9, Iteration # 900
+	Eigenmode variances: 687633 44858 11694.3 7338.81 1451.02 614.798 292.031 0.753583 0.313356 0.302309 -7.80025e-11 
+	Regularization = 1.25893
+	Correspondence Energy = 4.56362
+Scale # 9, Iteration # 950
+	Eigenmode variances: 685707 44928.3 11658.3 7336.87 1460.92 611.831 290.643 0.650526 0.290873 0.284839 6.28178e-11 
+	Regularization = 1.12202
+	Correspondence Energy = 4.52194
+Scale # 9, Iteration # 1000
+	Eigenmode variances: 683817 44993.6 11619.5 7334.27 1468.33 607.825 288.294 0.564778 0.276403 0.261105 -4.77263e-12 
+	Regularization = 1
+	Correspondence Energy = 4.47982
+GlobalSigma: 32.7339
+Scale # 10, Iteration # 50
+	Eigenmode variances: 1.36417e+06 90704.2 24255.6 15489 3627.21 1718.5 1025.85 219.537 99.8947 58.5755 2.94461e-10 
+	Regularization = 8.91251
+	Correspondence Energy = 6.38899
+Scale # 10, Iteration # 100
+	Eigenmode variances: 1.36077e+06 91005.8 24893.9 16066.9 4111.98 2178.4 1459.38 567.518 313.159 213.857 3.63707e-10 
+	Regularization = 7.94328
+	Correspondence Energy = 6.73953
+GlobalSigma: 31.7307
+Scale # 10, Iteration # 150
+	Eigenmode variances: 1.35743e+06 91236.4 25192.5 16420.3 4399.63 2504.98 1733.48 824.631 493.096 375.805 1.75912e-10 
+	Regularization = 7.07946
+	Correspondence Energy = 6.89001
+Scale # 10, Iteration # 200
+	Eigenmode variances: 1.35423e+06 91473.8 25423.2 16729.6 4656.23 2789 1967.17 1050.02 651.329 523.791 2.26518e-10 
+	Regularization = 6.30957
+	Correspondence Energy = 6.98474
+Scale # 10, Iteration # 250
+	Eigenmode variances: 1.35115e+06 91690.8 25615.1 16985.8 4875.01 3028.3 2174.13 1243.92 786.118 648.685 2.04561e-10 
+	Regularization = 5.62341
+	Correspondence Energy = 7.04847
+Scale # 10, Iteration # 300
+	Eigenmode variances: 1.34819e+06 91879.8 25777.3 17197.8 5060.21 3236.3 2365.26 1415.89 908.066 759.947 2.2041e-10 
+	Regularization = 5.01187
+	Correspondence Energy = 7.09573
+Scale # 10, Iteration # 350
+	Eigenmode variances: 1.34535e+06 92046.9 25904.9 17372.8 5217.82 3411.8 2539.98 1565.55 1017.87 859.042 -1.75114e-10 
+	Regularization = 4.46684
+	Correspondence Energy = 7.13116
+Scale # 10, Iteration # 400
+	Eigenmode variances: 1.34264e+06 92194.9 26000.9 17513.6 5352.59 3554.27 2695.3 1694.35 1114.05 947.146 1.78491e-10 
+	Regularization = 3.98107
+	Correspondence Energy = 7.15735
+Scale # 10, Iteration # 450
+	Eigenmode variances: 1.34007e+06 92323.4 26076.8 17624.8 5469.48 3669.56 2830.53 1805.09 1197.78 1024.69 1.16136e-10 
+	Regularization = 3.54813
+	Correspondence Energy = 7.17646
+Scale # 10, Iteration # 500
+	Eigenmode variances: 1.3376e+06 92428.4 26139 17713.1 5572.91 3763.55 2947.21 1899.57 1271.61 1092.21 -2.55088e-10 
+	Regularization = 3.16228
+	Correspondence Energy = 7.19015
+Scale # 10, Iteration # 550
+	Eigenmode variances: 1.33523e+06 92510.8 26190.2 17782.4 5665.62 3840.8 3048.28 1980.23 1336.99 1151.39 -3.01048e-11 
+	Regularization = 2.81838
+	Correspondence Energy = 7.19972
+Scale # 10, Iteration # 600
+	Eigenmode variances: 1.33295e+06 92573.4 26233.7 17837.7 5749.84 3907.25 3135.88 2049.82 1394.68 1203.56 -1.54285e-10 
+	Regularization = 2.51189
+	Correspondence Energy = 7.20613
+Scale # 10, Iteration # 650
+	Eigenmode variances: 1.33074e+06 92622.2 26271.4 17884.4 5827.28 3966.53 3211.9 2110.82 1446.22 1249.95 3.85246e-10 
+	Regularization = 2.23872
+	Correspondence Energy = 7.21015
+Scale # 10, Iteration # 700
+	Eigenmode variances: 1.32861e+06 92664.8 26304.9 17924.8 5899.04 4020.59 3278.93 2165.22 1492.32 1291.29 -3.25704e-10 
+	Regularization = 1.99526
+	Correspondence Energy = 7.21232
+Scale # 10, Iteration # 750
+	Eigenmode variances: 1.32654e+06 92704.9 26334.6 17961.3 5964.88 4070.69 3338.56 2214.64 1533.84 1328.22 -4.03428e-11 
+	Regularization = 1.77828
+	Correspondence Energy = 7.213
+Scale # 10, Iteration # 800
+	Eigenmode variances: 1.32453e+06 92745.8 26359.2 17994.4 6024.38 4117.33 3392.09 2259.88 1571.59 1361.39 2.68274e-11 
+	Regularization = 1.58489
+	Correspondence Energy = 7.21245
+Scale # 10, Iteration # 850
+	Eigenmode variances: 1.32255e+06 92788.4 26377.3 18023.6 6077.36 4160.57 3440.39 2301.52 1606.16 1391.21 -3.9613e-10 
+	Regularization = 1.41254
+	Correspondence Energy = 7.21082
+Scale # 10, Iteration # 900
+	Eigenmode variances: 1.3206e+06 92831.9 26389.1 18049.8 6124.66 4200.5 3484.43 2340 1637.91 1418.28 2.95329e-10 
+	Regularization = 1.25893
+	Correspondence Energy = 7.2083
+Scale # 10, Iteration # 950
+	Eigenmode variances: 1.31869e+06 92875.8 26396.7 18075.4 6167.65 4237.71 3524.3 2375.83 1667.51 1443.33 -2.59934e-10 
+	Regularization = 1.12202
+	Correspondence Energy = 7.20507
+Scale # 10, Iteration # 1000
+	Eigenmode variances: 1.3168e+06 92920.1 26400.6 18101.4 6207.46 4272.83 3559.92 2409.73 1695.43 1466.39 -1.23521e-10 
+	Regularization = 1
+	Correspondence Energy = 7.20125
+GlobalSigma: 23.8417
+GlobalSigma: 22.8385
+Scale # 11, Iteration # 50
+	Eigenmode variances: 2.62706e+06 187109 53670.8 37382.9 13536.8 9438.46 8254.51 5782.33 4304.86 3699.16 -1.49296e-09 
+	Regularization = 8.91251
+	Correspondence Energy = 8.06256
+Scale # 11, Iteration # 100
+	Eigenmode variances: 2.62357e+06 187769 54235.6 37974.2 13954.3 9824.48 8810.56 6220.84 4791.2 4148.6 9.72114e-10 
+	Regularization = 7.94328
+	Correspondence Energy = 8.09377
+Scale # 11, Iteration # 150
+	Eigenmode variances: 2.62047e+06 188583 54922.6 38563.9 14372.6 10294.7 9360.86 6671.96 5291.73 4684.05 3.14017e-10 
+	Regularization = 7.07946
+	Correspondence Energy = 8.125
+Scale # 11, Iteration # 200
+	Eigenmode variances: 2.61744e+06 189275 55496.9 39091.7 14750.5 10741.3 9823.01 7071.45 5733.24 5172.15 -3.22326e-10 
+	Regularization = 6.30957
+	Correspondence Energy = 8.14914
+Scale # 11, Iteration # 250
+	Eigenmode variances: 2.61442e+06 189745 55902.8 39504.7 15053.9 11079.8 10155.3 7380.06 6065.78 5537.55 -2.44691e-10 
+	Regularization = 5.62341
+	Correspondence Energy = 8.16336
+Scale # 11, Iteration # 300
+	Eigenmode variances: 2.61153e+06 190071 56193.6 39815.9 15286.4 11325.5 10388.7 7611.16 6310.25 5798.49 -5.59716e-10 
+	Regularization = 5.01187
+	Correspondence Energy = 8.17021
+Scale # 11, Iteration # 350
+	Eigenmode variances: 2.60881e+06 190319 56416.6 40049.3 15469.4 11513.8 10558.5 7786.09 6495.69 5995.29 -2.18052e-10 
+	Regularization = 4.46684
+	Correspondence Energy = 8.1725
+Scale # 11, Iteration # 400
+	Eigenmode variances: 2.60627e+06 190522 56599.5 40222.3 15618.4 11664.5 10691.2 7922.02 6645.46 6154.05 6.20846e-11 
+	Regularization = 3.98107
+	Correspondence Energy = 8.17199
+Scale # 11, Iteration # 450
+	Eigenmode variances: 2.60384e+06 190705 56750.1 40348.8 15745.6 11788.9 10802.1 8032.21 6773.68 6288.9 -2.26714e-10 
+	Regularization = 3.54813
+	Correspondence Energy = 8.16971
+Scale # 11, Iteration # 500
+	Eigenmode variances: 2.60148e+06 190877 56874.1 40445.3 15857 11895.5 10899.2 8126.71 6886.69 6405.66 -1.31384e-09 
+	Regularization = 3.16228
+	Correspondence Energy = 8.16622
+Scale # 11, Iteration # 550
+	Eigenmode variances: 2.59917e+06 191037 56980 40525.8 15956.2 11989.6 10987.4 8211.83 6987.99 6505.91 6.77101e-10 
+	Regularization = 2.81838
+	Correspondence Energy = 8.16186
+Scale # 11, Iteration # 600
+	Eigenmode variances: 2.59689e+06 191183 57073.3 40597.5 16046.3 12074.7 11070.2 8290.52 7079.97 6591.84 -2.69749e-10 
+	Regularization = 2.51189
+	Correspondence Energy = 8.15684
+Scale # 11, Iteration # 650
+	Eigenmode variances: 2.59462e+06 191313 57156.8 40664.2 16130.7 12151.8 11149.3 8363.71 7164.1 6666.09 -9.52883e-10 
+	Regularization = 2.23872
+	Correspondence Energy = 8.15129
+Scale # 11, Iteration # 700
+	Eigenmode variances: 2.59241e+06 191428 57234.2 40726.9 16211.9 12221.2 11225 8431.98 7241.19 6731.64 4.27886e-10 
+	Regularization = 1.99526
+	Correspondence Energy = 8.14532
+Scale # 11, Iteration # 750
+	Eigenmode variances: 2.59028e+06 191535 57309.4 40785.8 16292 12284.1 11298.1 8496.95 7311.91 6791.13 -1.46827e-09 
+	Regularization = 1.77828
+	Correspondence Energy = 8.13902
+Scale # 11, Iteration # 800
+	Eigenmode variances: 2.58824e+06 191636 57382.4 40841.4 16370.8 12341.1 11367.9 8558.84 7377.14 6846.21 -2.84919e-10 
+	Regularization = 1.58489
+	Correspondence Energy = 8.13245
+Scale # 11, Iteration # 850
+	Eigenmode variances: 2.58631e+06 191733 57453.9 40894.7 16446.6 12393.4 11435 8617.49 7437.82 6898.03 2.46497e-10 
+	Regularization = 1.41254
+	Correspondence Energy = 8.12564
+Scale # 11, Iteration # 900
+	Eigenmode variances: 2.58445e+06 191826 57524.1 40945.3 16519 12442.5 11499.4 8673.29 7494.81 6947.3 -1.20998e-09 
+	Regularization = 1.25893
+	Correspondence Energy = 8.11863
+Scale # 11, Iteration # 950
+	Eigenmode variances: 2.58265e+06 191914 57593.2 40991.8 16588.1 12488.7 11560.8 8726.92 7548.53 6994.47 6.21125e-12 
+	Regularization = 1.12202
+	Correspondence Energy = 8.11144
+Scale # 11, Iteration # 1000
+	Eigenmode variances: 2.58092e+06 192000 57660.7 41034 16653.5 12532 11619 8778.57 7599.2 7039.89 -7.30127e-10 
+	Regularization = 1
+	Correspondence Energy = 8.10407
+Optimization did not converge based on tolerance criteria.

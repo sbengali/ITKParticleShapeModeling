@@ -38,6 +38,8 @@ const std::string PSMProject::pairwise_potential_tag  = "pairwise_potential";
 const std::string PSMProject::inverse_method_tag      = "inverse_method";
 const std::string PSMProject::regularization_initial_mode_tag    = "regularization_initial_mode";
 const std::string PSMProject::shape_entropy_weight_tag           = "shape_entropy_weight";
+const std::string PSMProject::particle_entropy_weight_tag        = "particle_entropy_weight";
+const std::string PSMProject::time_step_tag                      = "time_step";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -172,6 +174,49 @@ double PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+double PSMProject
+::GetParticleEntropyWeighting() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(particle_entropy_weight_tag))
+        {
+            double weight = static_cast<double>(atof(opt->GetAttribute(particle_entropy_weight_tag).c_str()));
+            return weight;
+        }
+        else
+        {
+            itkExceptionMacro("Particle entropy weight not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
+
+double PSMProject
+::GetTimeStep() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(time_step_tag))
+        {
+            double step = static_cast<double>(atof(opt->GetAttribute(time_step_tag).c_str()));
+            return step;
+        }
+        else
+        {
+            itkExceptionMacro("Time step not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
+
 bool PSMProject
 ::HasOptimizationAttribute(const std::string& name, unsigned int s) const
 {
@@ -258,6 +303,26 @@ bool PSMProject
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
             if (opt->HasAttribute(shape_entropy_weight_tag))
+                return true;
+            else
+                return false;
+
+        }
+
+        if(name == particle_entropy_weight_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(particle_entropy_weight_tag))
+                return true;
+            else
+                return false;
+
+        }
+
+        if(name == time_step_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(time_step_tag))
                 return true;
             else
                 return false;

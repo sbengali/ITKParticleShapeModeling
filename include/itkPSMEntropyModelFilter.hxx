@@ -179,6 +179,15 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
         this->InitializeCorrespondences();
         this->InitializeOptimizationFunctions();
 
+        // set up the cost function weighting according to user input
+        // Cost = A + alpha*B
+        if(m_ParticleEntropyWeight != 1.0f) // supplied by the user
+            this->SetParticleEntropyWeighting(m_ParticleEntropyWeight); // this will tell the cost function to use this
+                                                                        // weight for the sampling part, shape entropy will have a unit weight
+        else
+            this->SetShapeEntropyWeighting(m_ShapeEntropyWeight); // otherwise, weight the shape part of the function
+
+
         this->SetInitialized(true);
     }
 
@@ -187,13 +196,52 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
     // actual optimization.
     if (this->GetInitializing() == true) return;
 
+    //    // in order to avoid to be dependent on the current particles configuration
+    //    // we can compute a rough value of the  global sigma based on surface area / number of particles
+    //    double average_surface_area = 0.0;
+    //    if(m_ParticleEntropyFunction->GetPairwisePotentialType() == "cotan")
+    //    {
+
+    //        for (unsigned int i = 0; i < m_ParticleSystem->GetNumberOfDomains(); i++)
+    //        {
+    //            typename CuberilleType::Pointer cuberille = CuberilleType::New();
+    //            cuberille->SetInput( dynamic_cast<PSMImplicitSurfaceDomain<typename ImageType::PixelType, Dimension> *>(
+    //                                     m_ParticleSystem->GetDomain(i))->GetImage() );
+    //            cuberille->SetIsoSurfaceValue( 0.0 );
+
+    //            typename InterpolatorType::Pointer interpolator = InterpolatorType::New();
+    //            interpolator->SetSplineOrder( 3 );
+    //            cuberille->SetInterpolator( interpolator );
+
+    //            cuberille->SetGenerateTriangleFaces( true );
+    //            cuberille->SetProjectVerticesToIsoSurface( true );
+    //            cuberille->SetProjectVertexSurfaceDistanceThreshold( 0.1 );
+    //            cuberille->SetProjectVertexStepLength( m_WorkingImages[i]->GetSpacing()[0] );
+    //            cuberille->SetProjectVertexStepLengthRelaxationFactor( 0.95 );
+    //            cuberille->SetProjectVertexMaximumNumberOfSteps( 50 );
+    //            cuberille->Update();
+
+    //            typename MeshType::Pointer outputMesh = cuberille->GetOutput();
+    //            typename SimplexFilterType::Pointer simplexFilter = SimplexFilterType::New();
+    //            simplexFilter->SetInput( outputMesh );
+    //            simplexFilter->Update();
+
+    //            typename SimplexVolumeType::Pointer vol = SimplexVolumeType::New();
+    //            vol->SetSimplexMesh(simplexFilter->GetOutput());
+    //            double area = vol->GetArea();
+
+    //            average_surface_area += area;
+
+    //        }
+    //    }
+    //    average_surface_area /= m_ParticleSystem->GetNumberOfDomains();
+
+
     // Multiscale optimization.  This can be stopped and restarted by
     // calling GenerateData again by maintaining m_CurrentScale.
     for (unsigned int scale = m_CurrentScale; scale < m_NumberOfScales; scale++)
     {
         m_CurrentScale = scale;
-
-        this->SetShapeEntropyWeighting(m_ShapeEntropyWeight);
 
         // Set up the optimization parameters for this scale, unless
         // this is a restart from a previous call to GenerateData. This
@@ -251,7 +299,14 @@ PSMEntropyModelFilter<TImage, TShapeMatrix>::GenerateData()
             // set a negative values to the particle's global sigma in case
             // using the cotan pairwise potential
             if(m_ParticleEntropyFunction->GetPairwisePotentialType() == "cotan")
+            {
+                // double sigma_g = 3.0f * (average_surface_area/m_ParticleSystem->GetNumberOfParticles());
+                // m_ParticleEntropyFunction->SetGlobalSigma(sigma_g);
+
+                // in order to avoid to be dependent on the current particles configuration
+                // we can compute a rough value of the  global sigma based on surface area / number of particles
                 m_ParticleEntropyFunction->SetGlobalSigma(-1.0f);
+            }
         }
 
     }

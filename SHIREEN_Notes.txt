@@ -114,7 +114,7 @@ Nov 29th, 2014 - Enabling auto initial regularization based on the eigen spectru
 Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting  -- committed
 ---------------------------------------------------------------------------------------
 
-(1) Added "shape_entropy_weight" attribute to the optimization tag which take "auto" or "manual" values  
+(1) Added "shape_entropy_weight" attribute to the optimization tag which take float values
 (2) Added to PSMProject shape_entropy_weight_tag
 (3) Modified HasOptimizationAttribute to check for the shape_entropy_weight_tag
 (4) Added GetShapeEntropyWeighting function to the PSMProject
@@ -128,13 +128,64 @@ Nov 29th-30th, 2014 - Enabling user to control the shape entropy weighting  -- c
 
     
 ---------------------------------------------------------------------------------------
-Nov 30th - Dec 1st, 2014 - Testing different scenarios
+Nov 30th - Dec 1st, 2014 - Testing different scenarios -- committed
 ---------------------------------------------------------------------------------------
 
 (1) Running box_1bumpout for different optimizers, regularization modes and pairwise potential
 (2) Adding box_1bumpin dataset and testing different scenarios
 (3) Modified auto regularization to start with 10 times the estimated regularization term in order
     to allow free motion during the early iterations of the splitting since coresspondence is bad initially anyway
+
+
+---------------------------------------------------------------------------------------
+Dec 2nd, 2014 - Weights on particle entropy, control time step and sigma is computed every iteration
+---------------------------------------------------------------------------------------
+
+(1) Modified PSMParticleEntropyFunction::BeforeIteration to allow computing before every iteration 
+    in case there is a significant change in the particles configuration
+(2) Added "particle_entropy_weight" attribute to the optimization tag which take float values
+    Note that if particle_entropy_weight is supplied, shape_entropy_weight will be taken to be 1.0
+(3) Added to PSMProject particle_entropy_weight_tag
+(4) Modified HasOptimizationAttribute to check for the particle_entropy_weight_tag
+(5) Added GetParticleEntropyWeighting function to the PSMProject
+(6) Added to PSMEntropyModelFilter a new member variable m_ParticleEntropyWeight
+(7) Added set/get of m_ParticleEntropyWeight
+(8) Modified PSMCommandLineClass::ReadInputCommonOptimizationAttributes to set the particle entropy weighting according to the user input,
+    default is 1.0
+(9) Added to PSMEntropyModelFilter Set/Get ParticleEntropyWeighting, this should tell the m_CostFunction which term to scale
+    in order to do this, we reverse the roles of functionA and functionB in the cost function
+(10) Modified PSMEntropyModelFilter::GenerateData to set up the particle entropy weighting (don't need to do this at every scale)
+     This will be done during the first call of GenerateData.
+(11) Added "time_step" attribute to the optimization tag which take float values
+(12) Added to PSMProject time_step_tag
+(13) Modified HasOptimizationAttribute to check for the time_step_tag
+(14) Added GetTimeStep function to the PSMProject
+(15) Modified PSMCommandLineClass::ReadInputCommonOptimizationAttributes to set the time step of the optimizer according to the user input,
+    default is 1.0
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+---------------------------------------------------------------------------------------
+Dec 1st, 2014 - Computing the global sigma based on surface area rather than neigborhood - surface area not working so far
+---------------------------------------------------------------------------------------
+
+(1) Added itkCuberilleImageToMeshFilter from http://www.insight-journal.org/browse/publication/740
+    to be able to extract isosurfaces from the input distance tranform using itk rather than vtk
+(2) Modified PSMEntropyModelFilter::GenerateData to compute the average surface area from all the 
+    working images in case the pairwise potential was chosen to be cotan
 
 
 

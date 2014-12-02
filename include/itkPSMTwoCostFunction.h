@@ -198,7 +198,7 @@ public:
   }
   
 protected:
-  PSMTwoCostFunction() : m_AOn(true), m_BOn(true), 
+  PSMTwoCostFunction() : m_AOn(true), m_BOn(true),
     m_RelativeGradientScaling(1.0), m_RelativeEnergyScaling(1.0) {}
 
   virtual ~PSMTwoCostFunction() {}

@@ -339,6 +339,34 @@ void PSMCommandLineClass<VDimension>
         // default is 1.0
         this->m_Filter->SetShapeEntropyWeight(1.0f);
     }
+
+    // Check if the particle entropy weight has been supplied
+    if(this->m_Project->HasOptimizationAttribute("particle_entropy_weight"))
+    {
+        double weight = this->m_Project->GetParticleEntropyWeighting();
+
+        std::cout << "Particle entropy weight: " << weight <<  ", Note: shape entropy weight will be 1.0" <<std::endl;
+        this->m_Filter->SetParticleEntropyWeight(weight);
+    }
+    else
+    {
+        // default is 1.0
+        this->m_Filter->SetParticleEntropyWeight(1.0f);
+    }
+
+    // Check if the time step has been supplied
+    if(this->m_Project->HasOptimizationAttribute("time_step"))
+    {
+        double step = this->m_Project->GetTimeStep();
+
+        std::cout << "Time step: " << step <<std::endl;
+        this->m_Filter->GetOptimizer()->SetTimeStep(step);
+    }
+    else
+    {
+        // default is 1.0
+        this->m_Filter->GetOptimizer()->SetTimeStep(1.0f);
+    }
 }
 
 template <unsigned int VDimension>
