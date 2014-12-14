@@ -224,7 +224,6 @@ bool PSMProject
     if (opt != 0) // found the optimization element
     {
         // allowing to check for different optimization attributes other than number_of_scales
-        if(name == number_of_scales_tag)
         {
             unsigned int nscales = 1;
 
@@ -232,7 +231,9 @@ bool PSMProject
             if (opt->HasAttribute(number_of_scales_tag))
             {
                 nscales = static_cast<unsigned int>(atoi(opt->GetAttribute(number_of_scales_tag).c_str()));
-                return true;
+                //return true;
+                // If the number_of_scales_tag is the one being checked
+                if(name == number_of_scales_tag) { return true; }
             }
 
             // Did the user ask for a scale that isn't specified?

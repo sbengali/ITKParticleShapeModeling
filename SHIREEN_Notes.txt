@@ -138,7 +138,7 @@ Nov 30th - Dec 1st, 2014 - Testing different scenarios -- committed
 
 
 ---------------------------------------------------------------------------------------
-Dec 2nd, 2014 - Weights on particle entropy, control time step and sigma is computed every iteration
+Dec 2nd, 2014 - Weights on particle entropy, control time step and sigma is computed every iteration  -- committed
 ---------------------------------------------------------------------------------------
 
 (1) Modified PSMParticleEntropyFunction::BeforeIteration to allow computing before every iteration 
@@ -164,7 +164,15 @@ Dec 2nd, 2014 - Weights on particle entropy, control time step and sigma is comp
     default is 1.0
     
     
-    
+---------------------------------------------------------------------------------------
+Dec 2nd, 2014 - Investigating simple cases
+---------------------------------------------------------------------------------------
+
+(1) Added Torus2 which only has the DT of Torus to run my scenarios
+(2) Added box_1mode which has similar image characteristics as torus    
+(3) Added box_1bumpout_position2 which is constructed in a similar fashion as box_1mode
+(4) Added box_2bumpout_position which is constructed in a similar fashion as box_1mode
+(5) Added box_3bumpout_position which is constructed in a similar fashion as box_1mode
     
     
     

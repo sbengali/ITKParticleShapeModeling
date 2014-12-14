@@ -40,6 +40,11 @@ int main( int argc, char *argv[] )
     //    argv[3] = (char*) "../Data/box_1bumpout_position/";
     //    argv[4] = (char*) "../Data/box_1bumpout_position/";
 
+    //    argv[1] = (char*) "/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/IPMI_UNC_COLLAB/DATA/paramfiles/vent.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_EIG.xml";
+    //    argv[2] = (char*) "3";
+    //    argv[3] = (char*) "/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/IPMI_UNC_COLLAB/DATA/";
+    //    argv[4] = (char*) "/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/IPMI_UNC_COLLAB/DATA/";
+
     int dim = 0;
     std::string output_path = "";
     std::string input_path_prefix = "";
