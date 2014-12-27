@@ -50,7 +50,10 @@ void PSMCommandLineClass<VDimension>
             // Reset the counter
             this->m_ProcrustesCounter = 0;
             this->m_ProcrustesRegistration->RunRegistration();
-            std::cout << "Run Procrustes Registration" << std::endl;
+            if(this->m_ProcrustesRegistration->GetScaling())
+                std::cout << "Run Procrustes Registration with scaling ON !!!" << std::endl;
+            else
+                std::cout << "Run Procrustes Registration with scaling OFF !!!" << std::endl;
         }
     }
     PSMEntropyModelFilter<PSMCommandLineClass::ImageType> *o
@@ -265,7 +268,7 @@ void PSMCommandLineClass<VDimension>
 ::ReadInputCommonOptimizationAttributes()
 {
     // Check if the optimizer type has been supplied
-    if(this->m_Project->HasOptimizationAttribute("optimizer"))
+    if(this->m_Project->HasCommonOptimizationAttribute("optimizer"))
     {
         std::string optimizer_type = this->m_Project->GetOptimizerType();
 
@@ -285,7 +288,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the pairwise potential type has been supplied
-    if(this->m_Project->HasOptimizationAttribute("pairwise_potential"))
+    if(this->m_Project->HasCommonOptimizationAttribute("pairwise_potential"))
     {
         std::string pairwise_potential = this->m_Project->GetPairwisePotentialType();
 
@@ -299,7 +302,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the inverse method has been supplied
-    if(this->m_Project->HasOptimizationAttribute("inverse_method"))
+    if(this->m_Project->HasCommonOptimizationAttribute("inverse_method"))
     {
         std::string inverse_method = this->m_Project->GetInverseMethod();
 
@@ -313,7 +316,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the regularization mode has been supplied
-    if(this->m_Project->HasOptimizationAttribute("regularization_initial_mode"))
+    if(this->m_Project->HasCommonOptimizationAttribute("regularization_initial_mode"))
     {
         std::string reg_mode = this->m_Project->GetRegularizationInitialMode();
 
@@ -327,7 +330,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the shape entropy weight has been supplied
-    if(this->m_Project->HasOptimizationAttribute("shape_entropy_weight"))
+    if(this->m_Project->HasCommonOptimizationAttribute("shape_entropy_weight"))
     {
         double weight = this->m_Project->GetShapeEntropyWeighting();
 
@@ -341,7 +344,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the particle entropy weight has been supplied
-    if(this->m_Project->HasOptimizationAttribute("particle_entropy_weight"))
+    if(this->m_Project->HasCommonOptimizationAttribute("particle_entropy_weight"))
     {
         double weight = this->m_Project->GetParticleEntropyWeighting();
 
@@ -355,7 +358,7 @@ void PSMCommandLineClass<VDimension>
     }
 
     // Check if the time step has been supplied
-    if(this->m_Project->HasOptimizationAttribute("time_step"))
+    if(this->m_Project->HasCommonOptimizationAttribute("time_step"))
     {
         double step = this->m_Project->GetTimeStep();
 
@@ -366,6 +369,24 @@ void PSMCommandLineClass<VDimension>
     {
         // default is 1.0
         this->m_Filter->GetOptimizer()->SetTimeStep(1.0f);
+    }
+
+    // Check if the procrustes_scaling has been supplied
+    if(this->m_Project->HasCommonOptimizationAttribute("procrustes_scaling"))
+    {
+        std::string scalingflag = this->m_Project->GetProcrustesScalingFlag();
+
+        std::cout << "Procrustes scaling: " << scalingflag <<std::endl;
+
+        if(scalingflag == "on")
+            this->m_ProcrustesRegistration->ScalingOn();
+        else
+            this->m_ProcrustesRegistration->ScalingOff();
+    }
+    else
+    {
+        // default is on
+        this->m_ProcrustesRegistration->ScalingOn();
     }
 }
 

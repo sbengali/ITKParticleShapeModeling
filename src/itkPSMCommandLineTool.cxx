@@ -45,6 +45,11 @@ int main( int argc, char *argv[] )
     //    argv[3] = (char*) "/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/IPMI_UNC_COLLAB/DATA/";
     //    argv[4] = (char*) "/hdscratch/WORK/WHITAKER/SHAPE_ANALYSIS/IPMI_UNC_COLLAB/DATA/";
 
+    //    argv[1] = (char*) "/usr/sci/scratch/heart_graph/carma_midas/layered_model/paramfiles/carma_midas.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW05_EIG.xml";
+    //    argv[2] = (char*) "3";
+    //    argv[3] = (char*) "/usr/sci/scratch/heart_graph/carma_midas/layered_model/";
+    //    argv[4] = (char*) "/usr/sci/scratch/heart_graph/carma_midas/layered_model/";
+
     int dim = 0;
     std::string output_path = "";
     std::string input_path_prefix = "";

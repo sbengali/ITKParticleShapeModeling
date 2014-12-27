@@ -174,8 +174,26 @@ Dec 2nd, 2014 - Investigating simple cases
 (4) Added box_2bumpout_position which is constructed in a similar fashion as box_1mode
 (5) Added box_3bumpout_position which is constructed in a similar fashion as box_1mode
     
+---------------------------------------------------------------------------------------
+Dec 15th, 2014 - Enabling the control of procustes scaling
+---------------------------------------------------------------------------------------
+
+(1) Added "procrustes_scaling" attribute to the optimization tag which take "on", "off"
+(2) Added to PSMProject procrustes_scaling_tag
+(3) Modified HasOptimizationAttribute to check for the procrustes_scaling_tag
+(4) Added GetProcrustesScalingFlag function to the PSMProject
+(5) Modified PSMCommandLineClass::ReadInputCommonOptimizationAttributes to enable or disable procrustes scaling according to the user input 
+    the default will be turning the scaling on
     
     
+---------------------------------------------------------------------------------------
+Dec 27th, 2014 - Fixing a bug related to reading common optimization parameters
+---------------------------------------------------------------------------------------
+
+(1) add HasCommonOptimizationAttribute to PSMProject to read common optimization parameters 
+    regardless of the number of scales given
+(2) modify PSMCommandLineClass::ReadInputCommonOptimizationAttributes to read common optimization
+    parameters regardless of the scales
     
     
     

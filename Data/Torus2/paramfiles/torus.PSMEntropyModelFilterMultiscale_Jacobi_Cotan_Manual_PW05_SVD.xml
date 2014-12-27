@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+
+<psm_project 
+    name    = "PSMEntropyModelFilterTest Parameter File" 
+    author  = "Shireen Elhabian" 
+    date    = "November 2014" 
+    version = "1.0" 
+    url     = "http://www.sci.utah.edu/~shireen">
+
+  <notes>
+    This is an example PSM Project file for the itkPSMEntropyModelFilterTest.
+  </notes>
+
+  <data>
+    <!-- The distance transforms to shape surfaces: the input data -->
+    <distance_transforms>
+      groom/torusDT.00.mha
+      groom/torusDT.01.mha
+      groom/torusDT.02.mha
+      groom/torusDT.03.mha
+      groom/torusDT.04.mha
+      groom/torusDT.05.mha
+      groom/torusDT.06.mha
+      groom/torusDT.07.mha
+      groom/torusDT.08.mha
+      groom/torusDT.09.mha
+    </distance_transforms>
+    
+    <!-- The optimized output model -->
+    <model name = "optimized">
+      pdm/torus.00.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.01.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.02.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.03.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.04.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.05.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.06.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.07.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.08.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+      pdm/torus.09.optimized_Jacobi_Cotan_Manual_PW05_SVD.lpts
+    </model>
+  </data>
+  
+  <initialization algorithm="splitting">
+  </initialization>
+  
+  <optimization algorithm          = "basic" 
+		number_of_scales   = "11" 
+		optimizer          = "jacobi" 
+		pairwise_potential = "cotan"
+		inverse_method     = "svd"
+		regularization_initial_mode = "manual"
+		particle_entropy_weight     = "0.5"
+		>
+    <scale number = "0"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "1"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "2"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "3"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "4"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "5"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "6"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "7"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "8"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "9"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "10"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+  </optimization>
+
+</psm_project>

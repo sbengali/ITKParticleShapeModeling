@@ -1,0 +1,23 @@
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_EIG.txt
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW5_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW5_EIG.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW005_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW005_EIG.txt 
+
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_SVD.txt
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW5_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW5_SVD.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW005_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW005_SVD.txt 
+
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW1_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW1_EIG.txt
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW5_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW5_EIG.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW005_EIG.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW005_EIG.txt 
+
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW1_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW1_SVD.txt
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW5_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW5_SVD.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW005_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW005_SVD.txt
+
+
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW02_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW02_SVD.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW05_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW05_SVD.txt 
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW08_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW08_SVD.txt
+
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW01_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW01_SVD.txt
+ITKParticleShapeModeling paramfiles/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW015_SVD.xml 3 ./ ./ 2>&1 | tee log/torus.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW015_SVD.txt 

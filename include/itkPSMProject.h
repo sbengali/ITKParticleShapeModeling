@@ -77,7 +77,7 @@ namespace itk
   static const std::string           shape_entropy_weight_tag;
   static const std::string        particle_entropy_weight_tag;
   static const std::string                      time_step_tag;
-
+  static const std::string             procrustes_scaling_tag;
 
   /** Set the DOM node object, which contains the XML tree of
       parameter data.  This method will throw an exception if the
@@ -143,6 +143,10 @@ namespace itk
    */
   double GetParticleEntropyWeighting() const;
 
+  /** Retruns the procrustes scaling flag
+   **/
+  std::string GetProcrustesScalingFlag() const;
+
   /** Returns the time step to be used in Jacobi/Gauss Seidel iterations
    */
   double GetTimeStep() const;
@@ -151,6 +155,7 @@ namespace itk
       parameter at the given scale (optional).  Also returns false if
       no optimization_tag exists.*/
   bool HasOptimizationAttribute(const std::string& name, unsigned int i = 0) const;
+  bool HasCommonOptimizationAttribute(const std::string& name, unsigned int i = 0) const;
 
   /** Returns an attribute of the optimization_tag element as a
       double-precision floating point number.  To work with attributes

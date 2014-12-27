@@ -40,6 +40,7 @@ const std::string PSMProject::regularization_initial_mode_tag    = "regularizati
 const std::string PSMProject::shape_entropy_weight_tag           = "shape_entropy_weight";
 const std::string PSMProject::particle_entropy_weight_tag        = "particle_entropy_weight";
 const std::string PSMProject::time_step_tag                      = "time_step";
+const std::string PSMProject::procrustes_scaling_tag              = "procrustes_scaling";
 
 void PSMProject::SetDOMNode(PSMDOMNode *dom)
 {
@@ -195,6 +196,25 @@ double PSMProject
     itkExceptionMacro("No " + optimization_tag + " was found.");
 }
 
+std::string PSMProject
+::GetProcrustesScalingFlag() const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+
+    if (opt != 0)
+    {
+        if (opt->HasAttribute(procrustes_scaling_tag))
+        {
+            return opt->GetAttribute(procrustes_scaling_tag);
+        }
+        else
+        {
+            itkExceptionMacro("Procrutes scaling not specified");
+        }
+    }
+
+    itkExceptionMacro("No " + optimization_tag + " was found.");
+}
 
 double PSMProject
 ::GetTimeStep() const
@@ -261,6 +281,17 @@ bool PSMProject
             }
         }
 
+    }
+
+    return false;
+}
+
+bool PSMProject
+::HasCommonOptimizationAttribute(const std::string& name, unsigned int s) const
+{
+    DOMNode *opt = m_DOMNode->GetChild(optimization_tag);
+    if (opt != 0) // found the optimization element
+    {
         if(name == optimizer_tag)
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
@@ -324,6 +355,16 @@ bool PSMProject
         {
             // this is a global attribute for all scales, so no need to check for a scale element s
             if (opt->HasAttribute(time_step_tag))
+                return true;
+            else
+                return false;
+
+        }
+
+        if(name == procrustes_scaling_tag)
+        {
+            // this is a global attribute for all scales, so no need to check for a scale element s
+            if (opt->HasAttribute(procrustes_scaling_tag))
                 return true;
             else
                 return false;

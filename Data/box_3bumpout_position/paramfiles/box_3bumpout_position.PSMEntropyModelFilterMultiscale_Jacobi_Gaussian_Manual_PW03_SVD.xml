@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+
+<psm_project 
+    name    = "PSMEntropyModelFilterTest Parameter File" 
+    author  = "Shireen Elhabian" 
+    date    = "November 2014" 
+    version = "1.0" 
+    url     = "http://www.sci.utah.edu/~shireen">
+
+  <notes>
+    This is an example PSM Project file for the itkPSMEntropyModelFilterTest.
+  </notes>
+
+  <data>
+    <!-- The distance transforms to shape surfaces: the input data -->
+    <distance_transforms>
+	groom/box_3bumpout_position.00.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.01.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.02.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.03.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.04.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.05.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.06.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.07.tpSmoothDT.nrrd
+	groom/box_3bumpout_position.08.tpSmoothDT.nrrd
+    </distance_transforms>
+    
+    <!-- The optimized output model -->
+    <model name = "optimized">
+      pdm/box_3bumpout_position.00.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.01.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.02.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.03.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.04.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.05.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.06.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.07.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+      pdm/box_3bumpout_position.08.optimized_Jacobi_Gaussian_Manual_PW03_SVD.lpts
+    </model>
+  </data>
+  
+  <initialization algorithm="splitting">
+  </initialization>
+  
+  <optimization algorithm          = "basic" 
+		number_of_scales   = "11" 
+		optimizer          = "jacobi" 
+		pairwise_potential = "gaussian"
+		inverse_method     = "svd"
+		regularization_initial_mode = "manual"
+		particle_entropy_weight     = "0.3"
+		>
+    <scale number = "0"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "1"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "2"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "3"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "4"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "500"
+           tolerance                = "0.01"
+           maximum_iterations       = "500"
+           >
+    </scale>
+    <scale number = "5"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "6"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "7"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "8"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "9"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+    <scale number = "10"
+           regularization_initial   = "10.0"
+           regularization_final     = "1.0" 
+           regularization_decayspan = "1000"
+           tolerance                = "0.01"
+           maximum_iterations       = "1000"
+           >
+    </scale>
+  </optimization>
+
+</psm_project>

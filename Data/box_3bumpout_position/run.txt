@@ -1,0 +1,8 @@
+ITKParticleShapeModeling paramfiles/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_SVD.xml 3 ./ ./ 2>&1 | tee log/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW1_SVD.txt
+ITKParticleShapeModeling paramfiles/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW05_SVD.xml 3 ./ ./ 2>&1 | tee log/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW05_SVD.txt
+
+ITKParticleShapeModeling paramfiles/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW04_SVD.xml 3 ./ ./ 2>&1 | tee log/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW04_SVD.txt
+ITKParticleShapeModeling paramfiles/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW03_SVD.xml 3 ./ ./ 2>&1 | tee log/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Gaussian_Manual_PW03_SVD.txt
+
+ITKParticleShapeModeling paramfiles/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW035_SVD.xml 3 ./ ./ 2>&1 | tee log/box_3bumpout_position.PSMEntropyModelFilterMultiscale_Jacobi_Cotan_Manual_PW035_SVD.txt
+ 
