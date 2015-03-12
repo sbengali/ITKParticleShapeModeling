@@ -5,7 +5,6 @@ TODO:
 (2) Automatic starting regularization
 (3) svd-based inverse  -- DONE
 (4) Adaptive Gauss Seidel optimization (without bad moves)  -- DONE
-(5) Mixtures stuff
 
 ---------------------------------------------------------------------------------------
 Nov 28th, 2014 - Allowing the control of the type of the optimizer from the parameter file -- commited
@@ -197,29 +196,4 @@ Dec 27th, 2014 - Fixing a bug related to reading common optimization parameters
     
     
     
-    
-    
-    
-    
-    
-    
-    
----------------------------------------------------------------------------------------
-Dec 1st, 2014 - Computing the global sigma based on surface area rather than neigborhood - surface area not working so far
----------------------------------------------------------------------------------------
-
-(1) Added itkCuberilleImageToMeshFilter from http://www.insight-journal.org/browse/publication/740
-    to be able to extract isosurfaces from the input distance tranform using itk rather than vtk
-(2) Modified PSMEntropyModelFilter::GenerateData to compute the average surface area from all the 
-    working images in case the pairwise potential was chosen to be cotan
-
-
-
-
-
-
----------------------------------------------------------------------------------------
-Nov 29th, 2014 - Enabling saving individual scales
----------------------------------------------------------------------------------------
-
     
